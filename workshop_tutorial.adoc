@@ -5,7 +5,7 @@
 
 
 == PyMOL
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/PyMOL_logo.svg.png[width=100]
+image::Pictures/PyMOL_logo.svg.png[width=100]
 PyMOL is a molecular visualization program written in Python, hence the 'Py' suffix.
 It was released for the first time in 2000 as an open source and free software by DeLano Scientific LLC with a vision of open science.
 Since 2010 it is commercialized by Schrödinger, Inc. and some of the source code are no longer released.
@@ -35,7 +35,7 @@ load /path2file/1t2d.pdb
 After uploaded, the structure will appear as a new object at the sidebar with the name of the file without the .pdb extension.
 Note that if you try to load it again, a second state will be added to the same object, as indicated by the green numbers at the object tab.
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture2.png[width=200]
+image::Pictures/Picture2.png[width=200]
 
 This is convenient when you have different models for the same structure, like proteins solved by Nuclear Magnetic Resonance, or different conformations of Molecular Dynamics, or different frames of a movie.
 Let's change the name of this object to avoid loading states onto it.
@@ -65,7 +65,7 @@ Enable the sequence bar with the S button.
 Note that the first residue in the sequence of 1t2d object, which came from the .cif file, appears in grey.
 This is a missing residue, which in the .pdb file in disregarded.
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture3.png[]
+image::Pictures/Picture3.png[]
 
 Let's work only with the 1t2d object and delete the other one.
 [source,python]
@@ -88,7 +88,7 @@ Protein structures are automatically loaded in the cartoon mode, as listed in th
 In the cartoon mode, helices and sheets are displayed as helices and arrows, respectively.
 These two secondary structures (ss) can be easily differentiated by colour.
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture4.png[width=500]
+image::Pictures/Picture4.png[width=500]
 
 [source,python]
 ----
@@ -151,7 +151,7 @@ Take a look at the python scripts you just used.
 At the top of them there is a HEX colour code that you can change as you prefer.
 You must have two output files now. monomerA_dssp.png is a figure with a coloured matrix indicating the ss,
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture5.png[width=500]
+image::Pictures/Picture5.png[width=500]
 
 and 1t2d_dssp.pml is a file with commands to be read by PyMOL.
 Let's open it with PyMOL.
@@ -174,7 +174,7 @@ color yellow, obj01 and ss s
 color green, obj01 and ss l+''
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture6.png[]
+image::Pictures/Picture6.png[]
 
 Note how some strange helical turns are differently assigned by DSSP. When you are finished comparing the structures, delete obj01.
 [source, python]
@@ -193,7 +193,7 @@ From blue to red in a rainbow scale.
 spectrum count, rainbow, 1t2d
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture6b.png[width=500]
+image::Pictures/Picture6b.png[width=500]
 
 From the python script, it is clear how any color can be selected using HEX codes with the command line. But any color can be created with mouse actions as well.
 [source,python]
@@ -227,7 +227,7 @@ color yellow, Rossmann and ss s
 color green, Rossmann and ss l+''
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/PictureA.png[width=500]
+image::Pictures/PictureA.png[width=500]
 
 Note that NAD lies right above the Rossmann fold and let's color it regarding its atoms.
 [source,python]
@@ -240,7 +240,7 @@ select NAD, 1t2d and resname NAD
 color atomic, NAD and (not element C)
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/PictureB.png[width=500]
+image::Pictures/PictureB.png[width=500]
 
 Now, find the residues that make polar contacts with NAD
 [source, python]
@@ -273,7 +273,7 @@ hide sticks, 1t2d
 show sticks, resbond or NAD
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/PictureC.png[width=500]
+image::Pictures/PictureC.png[width=500]
 
 Note that all residues contacting the NAD molecule come from loops of the Rossmann fold, except those contacting the first helix of the folding.
 Let's measure the distance for this interaction between the phosphate of the NAD molecule and nitrogen of the first residues in the helix.
@@ -293,7 +293,7 @@ APBS stands for Adaptative Poisson-Boltzmann Solver.
 It's a program to numerically solve the rearrangement of charges of a molecule surrounded by a solvent with ions and dielectric properties.
 
 .Redistribution of charges of the solid in response to the charges of the solvent [source: link:https://en.wikipedia.org/wiki/Poisson%E2%80%93Boltzmann_equation[wikipedia]].
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/PicturePB_wikipedia.jpg[]
+image::Pictures/PicturePB_wikipedia.jpg[]
 
 Let's calculate the distribution of the electrostatic potential at the surface of the first helix of the Rossmann fold.
 [source,python]
@@ -313,7 +313,7 @@ set surface_color, apbs_ramp01, prepared01
 show surface, prepared01
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/PictureD.png[width=500]
+image::Pictures/PictureD.png[width=500]
 
 Note how the beginning of the helix is more positive (or acidic), which attracts the negatively charged phosphates, and the end of the helix is more negative (or basic).
 
@@ -332,7 +332,7 @@ set surface_color, apbs_ramp02, prepared02
 show surface, prepared02
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/PictureE.png[width=500]
+image::Pictures/PictureE.png[width=500]
 
 Note how NAD sits in a very acidic pocket.
 And note that there is another very acidic region, possibly a region for binding something else.
@@ -343,7 +343,7 @@ By the way, we forgot that this protein actually forms a biological tetramer!
 We were looking only at the asymmetric unit.
 Let's generate its symmetry mates.
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/PictureF.png[width=500]
+image::Pictures/PictureF.png[width=500]
 
 [source,python]
 ----
@@ -362,7 +362,7 @@ Given a pdb file, it provides information on protein interfaces, solvent accessi
 Last, run APBS for the three other monomers forming the tetramer, and check if the most charged surfaces are now satisfied with counter charges.
 Note how the NAD pockets are still exposed.
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/PictureG.png[width=500]
+image::Pictures/PictureG.png[width=500]
 
 == Rendering a figure
 
@@ -370,7 +370,7 @@ Finally, PyMOL allows you to explore your artistic skills and render a clear and
 In this example, we focus on the interaction of the NAD molecule with the first helix of the Rossmann fold.
 See if you can reproduce this image:
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture7.png[]
+image::Pictures/Picture7.png[]
 
 First, choose a position where the main characters are centralized.
 Choose colors that highlight the main characters, and prefer to show only the necessary.
@@ -477,7 +477,7 @@ set all_states, on, 1se9
 ----
 Color by secondary structure again and note how loops are more flexible than helices and sheets.
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/PictureH.png[width=500]
+image::Pictures/PictureH.png[width=500]
 
 In another way, structures from x-ray diffraction carry Atomic Displacement Parameter (ADP), proportional to the amount of smearing of the electron density.
 The emperature factor, or B factor, or Debye-Waller factor, is a single parameter per atom.
@@ -497,7 +497,7 @@ fetch 4pc8
 
 There are three different ways of visualizing temperature factors with PyMOL.
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture8.png[]
+image::Pictures/Picture8.png[]
 
 [source, python]
 ----
@@ -543,7 +543,7 @@ python plot_bfactor.py pdbfileslist.txt
 The output shows the B factor per residue number.
 Check that the highest values correspond to loops of the TIM barrel.
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture9.png[width=500]
+image::Pictures/Picture9.png[width=500]
 
 == Analyses of oligomers [[oligo]]
 
@@ -606,7 +606,7 @@ show sticks, hydrophobic
 color orange, hydrophobic
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture10.png[]
+image::Pictures/Picture10.png[]
 
 A map of contacts can be very helpful to identify interchain contacts as well.
 We can generate it using the biopython library again.
@@ -628,7 +628,7 @@ This plots a heatmap of distances between alpha carbons of each residue of the c
 In the interchain contact map, close parallel lines (at the N terminal) indicate an alpha helix structure, antiparallel indicate neighbour beta strands
 and parallel lines far from the main diagonal indicate a second beta strand in the beta sheet.
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture11.png[]
+image::Pictures/Picture11.png[]
 
 Besides contacting residues, we can look at the shape of the interface, back with PyMOL.
 The surface is calculated in link:https://pymolwiki.org/index.php/Surface[PyMOL]
@@ -636,7 +636,7 @@ as the area accessible to a rolling a ball, like a solvent molecule would do.
 The radius of this ball is previously defined and usually relates to the radius of a water molecule, typically 1.4 Å.
 
 .Illustration of the calculation of solvent accessible surfaces [source: link:https://en.wikipedia.org/wiki/Accessible_surface_area[wikipedia]].
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture_RollingBall_wikipedia.png[width=200]
+image::Pictures/Picture_RollingBall_wikipedia.png[width=200]
 
 [source, python]
 ----
@@ -685,7 +685,7 @@ set surface_color, apbs_ramp02, prepared02
 show surface, prepared02
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture12.png[]
+image::Pictures/Picture12.png[]
 
 Last, generate the surface of electrostatic potential distribution for the entire heptamer.
 ----
@@ -704,7 +704,7 @@ Note how the charge distribution differs greatly at both sides of this doughnut-
 It makes this protein a strong dipole.
 Can you imagine what is its link:https://www.pnas.org/doi/full/10.1073/pnas.091102298[function]?
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture13.png[]
+image::Pictures/Picture13.png[]
 
 
 == Making mutations
@@ -739,7 +739,7 @@ And run the plot_bfactor.py script again.
 python plot_bfactor.py pdbfileslist.txt
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture14.png[width=500]
+image::Pictures/Picture14.png[width=500]
 
 Note how 4pcf has a globally lower B factor than 4pc8.
 4pcf has also a lower resolution than 4pc8, so it is hard to conclude from that alone that residues in 4pcf are really less flexible.
@@ -826,7 +826,7 @@ Let's mutate the Glutamine65 of 4pcf to a Leucine!
 ----
 Does your mutated 4pcf look more similar to 4pc8?
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture15.png[]
+image::Pictures/Picture15.png[]
 
 Let's mutate the second protein now, the heptamer.
 Don't forget to save your current session before starting a new one.
@@ -852,7 +852,7 @@ Try to go over the mutagenesis steps again and make the mutation I76P.
 Pay attention to changes in the beta strand after sculpting and find for polar contacts again.
 Do you see any difference?
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture16.png[]
+image::Pictures/Picture16.png[]
 
 == Making predictions with AlphaFold2
 
@@ -1089,7 +1089,7 @@ We will use a python script that reads the features.pkl, so just give the folder
  python3 plot_coverage_msa.py /filer/projekte/protein_structure_workshop/amanda/4pcf_Q65L
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture20.png[]
+image::Pictures/Picture20.png[]
 
 In this image we can see how many sequences were found for each residue (black line),
 to which region they align (coloured horizontal lines), and what is the identity to the given sequence (colour bar).
@@ -1153,7 +1153,7 @@ color n3, b < 50
 <2> With command line we can choose a reverse rainbow palette and with better suited range.
 <3> With command lines we can also apply the same colour palette for confidence as used by AlphaFold.
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture21.png[]
+image::Pictures/Picture21.png[]
 
 Note how the confidence is in general very high, except for the loops close to the active site and the N-terminal.
 
@@ -1161,14 +1161,14 @@ It's easier to compare structures with 2D plots and we can retrieve the pLDDT us
 Let's first compare pLDDT with b factors from the experimentally solved structure.
 So change the pdbfileslist.txt to consider them and then use the python script plot_bfactor.py as before (<<flex>>).
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture22.png[width=500]
+image::Pictures/Picture22.png[width=500]
 
 An obvious difference between the pLDDT and the B factors are the range of values and the inverse relation.
 But some peaks of the B factors seem to agree with some valleys of the pLDDT.
 Note that the last two valleys of the pLDDT seem to be shifted, as a result of missing residues from the original sequence that we didn't considered.
 Now let's compare all the three predictions of 4pcf, 4pc8 and 4pcf_Q65L. Do you see a difference?
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture23.png[width=500]
+image::Pictures/Picture23.png[width=500]
 
 The last parameter to analyse from AlphaFold is the Predicted Aligned Error (pae).
 It gives the error distance of residue y of the predicted and 'true' structures were aligned at residue x.
@@ -1195,7 +1195,7 @@ And then run the plot_pae.py python script.
 python3 plot_pae_diff.py pklfileslist_pae.txt
 ----
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture24.png[]
+image::Pictures/Picture24.png[]
 
 Can you recognise different regions, or domains, of the protein?
 Compared with the contact map we generated before, what information can you take from the interchain PAE?
@@ -1222,4 +1222,4 @@ And do the same for interchain contacts.
 
 What differences due to the mutation do you observe now? Are they meaningful?
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture25.png[]
+image::Pictures/Picture25.png[]
