@@ -1,1 +1,1 @@
-# AlphaFold_analysis
+# Protein Structure Workshop
