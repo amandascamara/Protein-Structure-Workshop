@@ -16,7 +16,7 @@ link:https://www2.mrc-lmb.cam.ac.uk/personal/pemsley/coot/[Coot] (specially usef
 
 PyMOL works both with graphical interface and command line.
 
-image::/Users/camara/Desktop/ProposalsPresentations/proteinWorkshop/Pictures/Picture1.png[]
+image::Pictures/Picture1.png[]
 
 Those many options allow different ways of working with molecules to do the same things.
 Throughout this tutorial we will show both ways, mouse actions and command lines, whenever possible.
