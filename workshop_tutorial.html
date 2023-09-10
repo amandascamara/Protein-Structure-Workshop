@@ -436,6 +436,221 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge .cm {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .c1 {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+pre.rouge .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+pre.rouge .ge {
+  color: #000000;
+  font-style: italic;
+}
+pre.rouge .gr {
+  color: #aa0000;
+}
+pre.rouge .gh {
+  color: #999999;
+}
+pre.rouge .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+pre.rouge .go {
+  color: #888888;
+}
+pre.rouge .gp {
+  color: #555555;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #aaaaaa;
+}
+pre.rouge .gt {
+  color: #aa0000;
+}
+pre.rouge .kc {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kd {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .k, pre.rouge .kv {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .mf {
+  color: #009999;
+}
+pre.rouge .mh {
+  color: #009999;
+}
+pre.rouge .il {
+  color: #009999;
+}
+pre.rouge .mi {
+  color: #009999;
+}
+pre.rouge .mo {
+  color: #009999;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #009999;
+}
+pre.rouge .sa {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .sb {
+  color: #d14;
+}
+pre.rouge .sc {
+  color: #d14;
+}
+pre.rouge .sd {
+  color: #d14;
+}
+pre.rouge .s2 {
+  color: #d14;
+}
+pre.rouge .se {
+  color: #d14;
+}
+pre.rouge .sh {
+  color: #d14;
+}
+pre.rouge .si {
+  color: #d14;
+}
+pre.rouge .sx {
+  color: #d14;
+}
+pre.rouge .sr {
+  color: #009926;
+}
+pre.rouge .s1 {
+  color: #d14;
+}
+pre.rouge .ss {
+  color: #990073;
+}
+pre.rouge .s, pre.rouge .dl {
+  color: #d14;
+}
+pre.rouge .na {
+  color: #008080;
+}
+pre.rouge .bp {
+  color: #999999;
+}
+pre.rouge .nb {
+  color: #0086B3;
+}
+pre.rouge .nc {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #008080;
+}
+pre.rouge .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #800080;
+}
+pre.rouge .ne {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #555555;
+}
+pre.rouge .nt {
+  color: #000080;
+}
+pre.rouge .vc {
+  color: #008080;
+}
+pre.rouge .vg {
+  color: #008080;
+}
+pre.rouge .vi {
+  color: #008080;
+}
+pre.rouge .nv, pre.rouge .vm {
+  color: #008080;
+}
+pre.rouge .ow {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .o {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #bbbbbb;
+}
+pre.rouge {
+  background-color: #f8f8f8;
+}
+</style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -456,9 +671,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_predicting_a_monomer">Predicting a monomer</a></li>
 <li><a href="#_predicting_a_multimer">Predicting a multimer</a></li>
-<li><a href="#_analysing_the_output_of_alphafold2">Analysing the output of AlphaFold2</a></li>
 </ul>
 </li>
+<li><a href="#_analysing_the_output_of_alphafold2">Analysing the output of AlphaFold2</a></li>
 </ul>
 </div>
 </div>
@@ -500,9 +715,9 @@ Command lines will follow &gt; and will be highlighted as Python codes.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># File -&gt; Open... -&gt; ... select downloaded 1t2d.pdb file
-&gt;
-load /path2file/1t2d.pdb</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># File -&gt; Open... -&gt; ... select downloaded 1t2d.pdb file
+</span><span class="o">&gt;</span>
+<span class="n">load</span> <span class="o">/</span><span class="n">path2file</span><span class="o">/</span><span class="mi">1</span><span class="n">t2d</span><span class="p">.</span><span class="n">pdb</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -520,9 +735,9 @@ Let&#8217;s change the name of this object to avoid loading states onto it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Action of 1t2d -&gt; rename object -&gt; Renaming 1t2d to 1t2d_pdb
-&gt;
-set_name 1t2d, 1t2d_pdb</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of 1t2d -&gt; rename object -&gt; Renaming 1t2d to 1t2d_pdb
+</span><span class="o">&gt;</span>
+<span class="n">set_name</span> <span class="mi">1</span><span class="n">t2d</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d_pdb</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -531,9 +746,9 @@ This feature automatically searches for a .cif file in the online PDB with the g
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># File -&gt; Get PDB... -&gt; 1t2d
-&gt;
-fetch 1t2d</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># File -&gt; Get PDB... -&gt; 1t2d
+</span><span class="o">&gt;</span>
+<span class="n">fetch</span> <span class="mi">1</span><span class="n">t2d</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -557,9 +772,9 @@ This is a missing residue, which in the .pdb file in disregarded.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Action of 1t2d_pdb -&gt; delete object
-&gt;
-delete 1t2d_pdb</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of 1t2d_pdb -&gt; delete object
+</span><span class="o">&gt;</span>
+<span class="n">delete</span> <span class="mi">1</span><span class="n">t2d_pdb</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -568,9 +783,9 @@ For the sake of easily analysing the protein structure, let&#8217;s remove the w
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Action of 1t2d -&gt; remove waters
-&gt;
-remove solvent</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of 1t2d -&gt; remove waters
+</span><span class="o">&gt;</span>
+<span class="n">remove</span> <span class="n">solvent</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -588,11 +803,11 @@ These two secondary structures (ss) can be easily differentiated by colour.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Color of 1t2d -&gt; by SS -&gt; choose first option
-&gt;
-color red, ss h
-color yellow, ss s
-color green, ss l+''</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Color of 1t2d -&gt; by SS -&gt; choose first option
+</span><span class="o">&gt;</span>
+<span class="n">color</span> <span class="n">red</span><span class="p">,</span> <span class="n">ss</span> <span class="n">h</span>
+<span class="n">color</span> <span class="n">yellow</span><span class="p">,</span> <span class="n">ss</span> <span class="n">s</span>
+<span class="n">color</span> <span class="n">green</span><span class="p">,</span> <span class="n">ss</span> <span class="n">l</span><span class="o">+</span><span class="s">''</span></code></pre>
 </div>
 </div>
 </div>
@@ -609,11 +824,11 @@ Then go to the workshop&#8217;s folder, create a folder for you and copy the scr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">pip install dssp-wsl
-cd /filer/projekte/protein_structure_workshop/
-mkdir amanda
-cd amanda
-cp ../scripts/* .</code></pre>
+<pre class="rouge highlight"><code data-lang="sh">pip <span class="nb">install </span>dssp-wsl
+<span class="nb">cd</span> /filer/projekte/protein_structure_workshop/
+<span class="nb">mkdir </span>amanda
+<span class="nb">cd </span>amanda
+<span class="nb">cp</span> ../scripts/<span class="k">*</span> .</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -623,8 +838,8 @@ It also outputs information on solvent accessibility, but we are only interested
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">&gt;
-mkdssp -i 1t2d.pdb -o 1t2d.dssp  <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>
+mkdssp <span class="nt">-i</span> 1t2d.pdb <span class="nt">-o</span> 1t2d.dssp  <i class="conum" data-value="1"></i><b>(1)</b>
 bash ssinfo.sh 1t2d.dssp <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
@@ -648,7 +863,7 @@ So first create a file named "dsspfileslist.txt" and write the following in it:<
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">&gt;
+<pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>
 vi dsspfileslist.txt</code></pre>
 </div>
 </div>
@@ -664,7 +879,7 @@ Now we can create a colour map and an input file for PyMOL.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">&gt;
+<pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>
 python plot_dssp_colorbars.py dsspfileslist.txt
 python dssp2pymol.py dsspfileslist.txt</code></pre>
 </div>
@@ -685,9 +900,9 @@ Let&#8217;s open it with PyMOL.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># File -&gt; Open... -&gt; 1t2d_dssp.pml
-&gt;
-load /path2file/1t2d_dssp.pml</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># File -&gt; Open... -&gt; 1t2d_dssp.pml
+</span><span class="o">&gt;</span>
+<span class="n">load</span> <span class="o">/</span><span class="n">path2file</span><span class="o">/</span><span class="mi">1</span><span class="n">t2d_dssp</span><span class="p">.</span><span class="n">pml</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -696,13 +911,13 @@ Duplicate the 1t2d object and color it again as default by PyMOL.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Action of 1t2d -&gt; copy to object -&gt; new
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of 1t2d -&gt; copy to object -&gt; new
 # Color of obj01 -&gt; by SS -&gt; choose first option
-&gt;
-copy obj01, 1t2d
-color red, obj01 and ss h
-color yellow, obj01 and ss s
-color green, obj01 and ss l+''</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">copy</span> <span class="n">obj01</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span>
+<span class="n">color</span> <span class="n">red</span><span class="p">,</span> <span class="n">obj01</span> <span class="ow">and</span> <span class="n">ss</span> <span class="n">h</span>
+<span class="n">color</span> <span class="n">yellow</span><span class="p">,</span> <span class="n">obj01</span> <span class="ow">and</span> <span class="n">ss</span> <span class="n">s</span>
+<span class="n">color</span> <span class="n">green</span><span class="p">,</span> <span class="n">obj01</span> <span class="ow">and</span> <span class="n">ss</span> <span class="n">l</span><span class="o">+</span><span class="s">''</span></code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -715,9 +930,9 @@ color green, obj01 and ss l+''</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Action of obj01 -&gt; delete object
-&gt;
-delete obj01</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of obj01 -&gt; delete object
+</span><span class="o">&gt;</span>
+<span class="n">delete</span> <span class="n">obj01</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -726,9 +941,9 @@ From blue to red in a rainbow scale.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Color of 1t2d -&gt; spectrum -&gt; rainbow
-&gt;
-spectrum count, rainbow, 1t2d</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Color of 1t2d -&gt; spectrum -&gt; rainbow
+</span><span class="o">&gt;</span>
+<span class="n">spectrum</span> <span class="n">count</span><span class="p">,</span> <span class="n">rainbow</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span></code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -741,9 +956,9 @@ spectrum count, rainbow, 1t2d</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Settings -&gt; Colors... -&gt; Red 0,17 Green 0,66 Blue 0,74 Name NewBlue -&gt; Apply
-&gt;
-set_color NewBlue, [43, 168, 189]</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Settings -&gt; Colors... -&gt; Red 0,17 Green 0,66 Blue 0,74 Name NewBlue -&gt; Apply
+</span><span class="o">&gt;</span>
+<span class="n">set_color</span> <span class="n">NewBlue</span><span class="p">,</span> <span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">189</span><span class="p">]</span></code></pre>
 </div>
 </div>
 </div>
@@ -763,16 +978,16 @@ Color the entire protein in white and highlight the Rossmann coloring its ss.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Color of 1t2d -&gt; grays -&gt; white
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Color of 1t2d -&gt; grays -&gt; white
 # in the sequence bar select residues 1-149
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to Rossmann
 # Color of (Rossmann) -&gt; by ss -&gt; first option
-&gt;
-color white, 1t2d
-select Rossmann, 1t2d and resid 1-149
-color red, Rossmann and ss h
-color yellow, Rossmann and ss s
-color green, Rossmann and ss l+''</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">color</span> <span class="n">white</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span>
+<span class="n">select</span> <span class="n">Rossmann</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">1</span><span class="o">-</span><span class="mi">149</span>
+<span class="n">color</span> <span class="n">red</span><span class="p">,</span> <span class="n">Rossmann</span> <span class="ow">and</span> <span class="n">ss</span> <span class="n">h</span>
+<span class="n">color</span> <span class="n">yellow</span><span class="p">,</span> <span class="n">Rossmann</span> <span class="ow">and</span> <span class="n">ss</span> <span class="n">s</span>
+<span class="n">color</span> <span class="n">green</span><span class="p">,</span> <span class="n">Rossmann</span> <span class="ow">and</span> <span class="n">ss</span> <span class="n">l</span><span class="o">+</span><span class="s">''</span></code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -785,12 +1000,12 @@ color green, Rossmann and ss l+''</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># select the NAD molecule
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># select the NAD molecule
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to NAD
 # Color of (NAD) -&gt; by element -&gt; first option
-&gt;
-select NAD, 1t2d and resname NAD
-color atomic, NAD and (not element C)</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">select</span> <span class="n">NAD</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span> <span class="ow">and</span> <span class="n">resname</span> <span class="n">NAD</span>
+<span class="n">color</span> <span class="n">atomic</span><span class="p">,</span> <span class="n">NAD</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">element</span> <span class="n">C</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -803,9 +1018,9 @@ color atomic, NAD and (not element C)</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Action of (NAD) -&gt; find -&gt; polar contacts -&gt; to other atoms in object
-&gt;
-dist Hbonds, (NAD), 1t2d, mode=2</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of (NAD) -&gt; find -&gt; polar contacts -&gt; to other atoms in object
+</span><span class="o">&gt;</span>
+<span class="n">dist</span> <span class="n">Hbonds</span><span class="p">,</span> <span class="p">(</span><span class="n">NAD</span><span class="p">),</span> <span class="mi">1</span><span class="n">t2d</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -814,11 +1029,11 @@ But some lines point to nothing. Let&#8217;s find out what are at the other end 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Action of (NAD) -&gt; modify -&gt; around -&gt; residues within 4 A
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of (NAD) -&gt; modify -&gt; around -&gt; residues within 4 A
 # Show of (NAD) -&gt; sticks
-&gt;
-select aroundNAD, byres all within 4 of (NAD)
-show sticks, aroundNAD</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">select</span> <span class="n">aroundNAD</span><span class="p">,</span> <span class="n">byres</span> <span class="nb">all</span> <span class="n">within</span> <span class="mi">4</span> <span class="n">of</span> <span class="p">(</span><span class="n">NAD</span><span class="p">)</span>
+<span class="n">show</span> <span class="n">sticks</span><span class="p">,</span> <span class="n">aroundNAD</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -826,15 +1041,15 @@ show sticks, aroundNAD</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># select residues contacting NAD
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># select residues contacting NAD
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to resbond
 # Hide of (1t2d) -&gt; sticks
 # Show of (resbond) -&gt; sticks
 # Show of (NAD) -&gt; sticks
-&gt;
-select resbond, resid 13+14+34+66+80+124+126+149
-hide sticks, 1t2d
-show sticks, resbond or NAD</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">select</span> <span class="n">resbond</span><span class="p">,</span> <span class="n">resid</span> <span class="mi">13</span><span class="o">+</span><span class="mi">14</span><span class="o">+</span><span class="mi">34</span><span class="o">+</span><span class="mi">66</span><span class="o">+</span><span class="mi">80</span><span class="o">+</span><span class="mi">124</span><span class="o">+</span><span class="mi">126</span><span class="o">+</span><span class="mi">149</span>
+<span class="n">hide</span> <span class="n">sticks</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span>
+<span class="n">show</span> <span class="n">sticks</span><span class="p">,</span> <span class="n">resbond</span> <span class="ow">or</span> <span class="n">NAD</span></code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -848,10 +1063,10 @@ Let&#8217;s measure the distance for this interaction between the phosphate of t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Mouse Mode Viewing and Selecting Atoms
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Mouse Mode Viewing and Selecting Atoms
 # Wizard -&gt; Measurement -&gt; pick the first atom -&gt; pick the second atom -&gt; Done
-&gt;
-dist measurement1, /1t2d/A/A/ILE`14/N, /1t2d/C/A/NAD`323/O1N</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">dist</span> <span class="n">measurement1</span><span class="p">,</span> <span class="o">/</span><span class="mi">1</span><span class="n">t2d</span><span class="o">/</span><span class="n">A</span><span class="o">/</span><span class="n">A</span><span class="o">/</span><span class="n">ILE</span><span class="sb">`14/N, /1t2d/C/A/NAD`</span><span class="mi">323</span><span class="o">/</span><span class="n">O1N</span></code></pre>
 </div>
 </div>
 </div>
@@ -876,19 +1091,19 @@ It&#8217;s a program to numerically solve the rearrangement of charges of a mole
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># select residues 12-25
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># select residues 12-25
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to helix1
 # Plugin -&gt; APBS Electrostatics -&gt; Selection polymer &amp; (helix1) -&gt; Yes
-&gt;
-select helix1, resid 12-25
-from pmg_tk.startup.apbs_gui.creating import pdb2pqr_cli
-from pmg_tk.startup.apbs_gui.electrostatics import map_new_apbs
-pdb2pqr_cli("prepared01", "(helix1)", options=["--ff", "amber"])
-map_new_apbs("apbs_map01", "prepared01")
-ramp_new apbs_ramp01, apbs_map01, [-5,0,5]
-set surface_ramp_above_mode, 1, prepared01
-set surface_color, apbs_ramp01, prepared01
-show surface, prepared01</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">select</span> <span class="n">helix1</span><span class="p">,</span> <span class="n">resid</span> <span class="mi">12</span><span class="o">-</span><span class="mi">25</span>
+<span class="kn">from</span> <span class="nn">pmg_tk.startup.apbs_gui.creating</span> <span class="kn">import</span> <span class="n">pdb2pqr_cli</span>
+<span class="kn">from</span> <span class="nn">pmg_tk.startup.apbs_gui.electrostatics</span> <span class="kn">import</span> <span class="n">map_new_apbs</span>
+<span class="n">pdb2pqr_cli</span><span class="p">(</span><span class="s">"prepared01"</span><span class="p">,</span> <span class="s">"(helix1)"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s">"--ff"</span><span class="p">,</span> <span class="s">"amber"</span><span class="p">])</span>
+<span class="n">map_new_apbs</span><span class="p">(</span><span class="s">"apbs_map01"</span><span class="p">,</span> <span class="s">"prepared01"</span><span class="p">)</span>
+<span class="n">ramp_new</span> <span class="n">apbs_ramp01</span><span class="p">,</span> <span class="n">apbs_map01</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">set</span> <span class="n">surface_ramp_above_mode</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">prepared01</span>
+<span class="nb">set</span> <span class="n">surface_color</span><span class="p">,</span> <span class="n">apbs_ramp01</span><span class="p">,</span> <span class="n">prepared01</span>
+<span class="n">show</span> <span class="n">surface</span><span class="p">,</span> <span class="n">prepared01</span></code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -904,16 +1119,16 @@ show surface, prepared01</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Plugin -&gt; APBS Electrostatics -&gt; Selection polymer &amp; 1t2d -&gt; Yes -&gt; Yes
-&gt;
-from pmg_tk.startup.apbs_gui.creating import pdb2pqr_cli
-from pmg_tk.startup.apbs_gui.electrostatics import map_new_apbs
-pdb2pqr_cli("prepared02", "1t2d", options=["--ff", "amber"])
-map_new_apbs("apbs_map02", "prepared02")
-ramp_new apbs_ramp02, apbs_map02, [-5,0,5]
-set surface_ramp_above_mode, 1, prepared02
-set surface_color, apbs_ramp02, prepared02
-show surface, prepared02</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Plugin -&gt; APBS Electrostatics -&gt; Selection polymer &amp; 1t2d -&gt; Yes -&gt; Yes
+</span><span class="o">&gt;</span>
+<span class="kn">from</span> <span class="nn">pmg_tk.startup.apbs_gui.creating</span> <span class="kn">import</span> <span class="n">pdb2pqr_cli</span>
+<span class="kn">from</span> <span class="nn">pmg_tk.startup.apbs_gui.electrostatics</span> <span class="kn">import</span> <span class="n">map_new_apbs</span>
+<span class="n">pdb2pqr_cli</span><span class="p">(</span><span class="s">"prepared02"</span><span class="p">,</span> <span class="s">"1t2d"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s">"--ff"</span><span class="p">,</span> <span class="s">"amber"</span><span class="p">])</span>
+<span class="n">map_new_apbs</span><span class="p">(</span><span class="s">"apbs_map02"</span><span class="p">,</span> <span class="s">"prepared02"</span><span class="p">)</span>
+<span class="n">ramp_new</span> <span class="n">apbs_ramp02</span><span class="p">,</span> <span class="n">apbs_map02</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">set</span> <span class="n">surface_ramp_above_mode</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">prepared02</span>
+<span class="nb">set</span> <span class="n">surface_color</span><span class="p">,</span> <span class="n">apbs_ramp02</span><span class="p">,</span> <span class="n">prepared02</span>
+<span class="n">show</span> <span class="n">surface</span><span class="p">,</span> <span class="n">prepared02</span></code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -942,9 +1157,9 @@ Let&#8217;s generate its symmetry mates.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Action of 1t2d -&gt; generate -&gt; symmetry mates -&gt; within 4 A
-&gt;
-symexp sym, 1t2d, (1t2d), 4</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of 1t2d -&gt; generate -&gt; symmetry mates -&gt; within 4 A
+</span><span class="o">&gt;</span>
+<span class="n">symexp</span> <span class="n">sym</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="n">t2d</span><span class="p">),</span> <span class="mi">4</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -987,18 +1202,18 @@ Choose colors that highlight the main characters, and prefer to show only the ne
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python">&gt;
-color white, 1t2d and not NAD
-color salmon, Rossmann and ss h
-color paleyellow, Rossmann and ss s
-color palegreen, Rossmann and ss l+''
-color red, obj01, helix1
-hide everything, prepared02
-show surface, prepared02 and resid 12-15
-show sticks, 1t2d and resid 13-14 and (name c,n,ca)
-create obj01, 1t2d and resid 10-25
-dist H1NADbonds, NAD, helix1, mode=2
-hide labels, H1NADbonds</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;</span>
+<span class="n">color</span> <span class="n">white</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">NAD</span>
+<span class="n">color</span> <span class="n">salmon</span><span class="p">,</span> <span class="n">Rossmann</span> <span class="ow">and</span> <span class="n">ss</span> <span class="n">h</span>
+<span class="n">color</span> <span class="n">paleyellow</span><span class="p">,</span> <span class="n">Rossmann</span> <span class="ow">and</span> <span class="n">ss</span> <span class="n">s</span>
+<span class="n">color</span> <span class="n">palegreen</span><span class="p">,</span> <span class="n">Rossmann</span> <span class="ow">and</span> <span class="n">ss</span> <span class="n">l</span><span class="o">+</span><span class="s">''</span>
+<span class="n">color</span> <span class="n">red</span><span class="p">,</span> <span class="n">obj01</span><span class="p">,</span> <span class="n">helix1</span>
+<span class="n">hide</span> <span class="n">everything</span><span class="p">,</span> <span class="n">prepared02</span>
+<span class="n">show</span> <span class="n">surface</span><span class="p">,</span> <span class="n">prepared02</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">12</span><span class="o">-</span><span class="mi">15</span>
+<span class="n">show</span> <span class="n">sticks</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">13</span><span class="o">-</span><span class="mi">14</span> <span class="ow">and</span> <span class="p">(</span><span class="n">name</span> <span class="n">c</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">ca</span><span class="p">)</span>
+<span class="n">create</span> <span class="n">obj01</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">10</span><span class="o">-</span><span class="mi">25</span>
+<span class="n">dist</span> <span class="n">H1NADbonds</span><span class="p">,</span> <span class="n">NAD</span><span class="p">,</span> <span class="n">helix1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">hide</span> <span class="n">labels</span><span class="p">,</span> <span class="n">H1NADbonds</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1006,14 +1221,14 @@ hide labels, H1NADbonds</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Display -&gt; Background -&gt; White
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Display -&gt; Background -&gt; White
 # Setting -&gt; Transparency -&gt; Surface -&gt; 50%
 # Setting -&gt; Transparency -&gt; Cartoon -&gt; 20% <i class="conum" data-value="1"></i><b>(1)</b>
-&gt;
-bg_color white
-set transparency, 0.5
-set cartoon_transparency, 0.2, 1t2d <i class="conum" data-value="1"></i><b>(1)</b>
-set cartoon_transparency, 0.0, obj01</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">bg_color</span> <span class="n">white</span>
+<span class="nb">set</span> <span class="n">transparency</span><span class="p">,</span> <span class="mf">0.5</span>
+<span class="nb">set</span> <span class="n">cartoon_transparency</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="nb">set</span> <span class="n">cartoon_transparency</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">obj01</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1033,7 +1248,7 @@ Hide also light effects for a clearer image.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Setting -&gt; Rendering -&gt; Shadows -&gt; None
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Setting -&gt; Rendering -&gt; Shadows -&gt; None
 # Display -&gt; Specular reflections (untick)
 # Draw/Ray -&gt; Ray(Slow) -&gt; Save picture to file -&gt; img1.png
 # Setting -&gt; Edit All... -&gt; ray_trace_mode set to 1
@@ -1043,20 +1258,20 @@ Hide also light effects for a clearer image.</p>
 # Setting -&gt; Edit All... -&gt; ray_trace_mode set to 2
 # Disable object obj01
 # Draw/Ray -&gt; Ray(Slow) -&gt; Save picture to file -&gt; img3.png
-&gt;
-set ray_shadows, 0
-set specular, off
-Ray
-png img1.png, dpi=300
-set ray_trace_mode, 1
-disable prepared02
-hide cartoon, 1t2d
-ray
-png img2.png, dpi=300
-set ray_trace_mode, 2
-disable obj01
-ray
-png img3.png, dpi=300</code></pre>
+</span><span class="o">&gt;</span>
+<span class="nb">set</span> <span class="n">ray_shadows</span><span class="p">,</span> <span class="mi">0</span>
+<span class="nb">set</span> <span class="n">specular</span><span class="p">,</span> <span class="n">off</span>
+<span class="n">Ray</span>
+<span class="n">png</span> <span class="n">img1</span><span class="p">.</span><span class="n">png</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span>
+<span class="nb">set</span> <span class="n">ray_trace_mode</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">disable</span> <span class="n">prepared02</span>
+<span class="n">hide</span> <span class="n">cartoon</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span>
+<span class="n">ray</span>
+<span class="n">png</span> <span class="n">img2</span><span class="p">.</span><span class="n">png</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span>
+<span class="nb">set</span> <span class="n">ray_trace_mode</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">disable</span> <span class="n">obj01</span>
+<span class="n">ray</span>
+<span class="n">png</span> <span class="n">img3</span><span class="p">.</span><span class="n">png</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1079,11 +1294,11 @@ For protein structures solved by Nuclear Magnetic Resonance (NMR), a single pdb 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># File -&gt; save session -&gt; 1t2d.pse
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># File -&gt; save session -&gt; 1t2d.pse
 # CLose PyMOL
-&gt;
-save 1t2d.pse
-quit()</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">save</span> <span class="mi">1</span><span class="n">t2d</span><span class="p">.</span><span class="n">pse</span>
+<span class="n">quit</span><span class="p">()</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1091,11 +1306,11 @@ quit()</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Open PyMOL
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Open PyMOL
 # File -&gt; Get PDB... -&gt; 1se9
-&gt;
-pymol
-fetch 1se9</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">pymol</span>
+<span class="n">fetch</span> <span class="mi">1</span><span class="n">se9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1104,9 +1319,9 @@ They are usually observed superposed.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Action of 1se9 -&gt; state -&gt; all state
-&gt;
-set all_states, on, 1se9</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of 1se9 -&gt; state -&gt; all state
+</span><span class="o">&gt;</span>
+<span class="nb">set</span> <span class="n">all_states</span><span class="p">,</span> <span class="n">on</span><span class="p">,</span> <span class="mi">1</span><span class="n">se9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1129,11 +1344,11 @@ Delete everything and fetch the code 4pc8.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Action of all -&gt; delete everything
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of all -&gt; delete everything
 # File -&gt; Get PDB... -&gt; 4pc8
-&gt;
-delete all
-fetch 4pc8</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">delete</span> <span class="nb">all</span>
+<span class="n">fetch</span> <span class="mi">4</span><span class="n">pc8</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1146,16 +1361,16 @@ fetch 4pc8</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Color of 4pc8 -&gt; spectrum -&gt; b-factors <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Color of 4pc8 -&gt; spectrum -&gt; b-factors <i class="conum" data-value="1"></i><b>(1)</b>
 # Action of 4pc8 -&gt; preset -&gt; b factor putty <i class="conum" data-value="2"></i><b>(2)</b>
-&gt;
-spectrum b, rainbow, 4pc8 <i class="conum" data-value="3"></i><b>(3)</b>
-cartoon putty, 4pc8
-hide cartoon, 4pc8
-show spheres, 4pc8
-remove solvent
-alter all, vdw=b/50 <i class="conum" data-value="4"></i><b>(4)</b>
-rebuild</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">spectrum</span> <span class="n">b</span><span class="p">,</span> <span class="n">rainbow</span><span class="p">,</span> <span class="mi">4</span><span class="n">pc8</span> <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="n">cartoon</span> <span class="n">putty</span><span class="p">,</span> <span class="mi">4</span><span class="n">pc8</span>
+<span class="n">hide</span> <span class="n">cartoon</span><span class="p">,</span> <span class="mi">4</span><span class="n">pc8</span>
+<span class="n">show</span> <span class="n">spheres</span><span class="p">,</span> <span class="mi">4</span><span class="n">pc8</span>
+<span class="n">remove</span> <span class="n">solvent</span>
+<span class="n">alter</span> <span class="nb">all</span><span class="p">,</span> <span class="n">vdw</span><span class="o">=</span><span class="n">b</span><span class="o">/</span><span class="mi">50</span> <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="n">rebuild</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1203,7 +1418,7 @@ So create a text file called "pdbfileslist.txt" with just one line and two colum
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">&gt;
+<pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>
 module load matplotlib
 python plot_bfactor.py pdbfileslist.txt</code></pre>
 </div>
@@ -1232,13 +1447,13 @@ Fetch the pdb 1i8f, remove waters and color the object by chain.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># File -&gt; Get PDB... -&gt; 1i8f
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># File -&gt; Get PDB... -&gt; 1i8f
 # Action of 1i8f -&gt; remove waters
 # Color of 18f -&gt; by chain
-&gt;
-fetch 1i8f
-remove solvent
-util.cbc 1i8f</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">fetch</span> <span class="mi">1</span><span class="n">i8f</span>
+<span class="n">remove</span> <span class="n">solvent</span>
+<span class="n">util</span><span class="p">.</span><span class="n">cbc</span> <span class="mi">1</span><span class="n">i8f</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1246,7 +1461,7 @@ util.cbc 1i8f</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Mouse selection mode Chain -&gt; select chains A and B
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Mouse selection mode Chain -&gt; select chains A and B
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to AandB
 # Action of (AandB) -&gt; find -&gt; polar contacts -&gt; between chains
 # Show of (AandB) -&gt; sticks
@@ -1255,11 +1470,11 @@ util.cbc 1i8f</code></pre>
 # Hide of (AandB) -&gt; sticks
 # Show of (polar) -&gt; sticks
 # Color of (polar) -&gt; by element -&gt; first option
-&gt;
-select polar, byres ((chain B and (donors or acceptors)) within 3.5 of (chain A and (donors or acceptors))) or ((chain A and (donors or acceptors)) within 3.5 of (chain B and (donors or acceptors)))
-show sticks, polar
-dist polarbonds,(chain A within 3.5 of chain B),(chain B within 3.5 of chain A), mode=2
-color atomic, polar and (not element C)</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">select</span> <span class="n">polar</span><span class="p">,</span> <span class="n">byres</span> <span class="p">((</span><span class="n">chain</span> <span class="n">B</span> <span class="ow">and</span> <span class="p">(</span><span class="n">donors</span> <span class="ow">or</span> <span class="n">acceptors</span><span class="p">))</span> <span class="n">within</span> <span class="mf">3.5</span> <span class="n">of</span> <span class="p">(</span><span class="n">chain</span> <span class="n">A</span> <span class="ow">and</span> <span class="p">(</span><span class="n">donors</span> <span class="ow">or</span> <span class="n">acceptors</span><span class="p">)))</span> <span class="ow">or</span> <span class="p">((</span><span class="n">chain</span> <span class="n">A</span> <span class="ow">and</span> <span class="p">(</span><span class="n">donors</span> <span class="ow">or</span> <span class="n">acceptors</span><span class="p">))</span> <span class="n">within</span> <span class="mf">3.5</span> <span class="n">of</span> <span class="p">(</span><span class="n">chain</span> <span class="n">B</span> <span class="ow">and</span> <span class="p">(</span><span class="n">donors</span> <span class="ow">or</span> <span class="n">acceptors</span><span class="p">)))</span>
+<span class="n">show</span> <span class="n">sticks</span><span class="p">,</span> <span class="n">polar</span>
+<span class="n">dist</span> <span class="n">polarbonds</span><span class="p">,(</span><span class="n">chain</span> <span class="n">A</span> <span class="n">within</span> <span class="mf">3.5</span> <span class="n">of</span> <span class="n">chain</span> <span class="n">B</span><span class="p">),(</span><span class="n">chain</span> <span class="n">B</span> <span class="n">within</span> <span class="mf">3.5</span> <span class="n">of</span> <span class="n">chain</span> <span class="n">A</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">color</span> <span class="n">atomic</span><span class="p">,</span> <span class="n">polar</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">element</span> <span class="n">C</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1272,7 +1487,7 @@ Among the residues that are close to each other at the interface, we can select 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Mouse selection mode Chain -&gt; select chains B and C
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Mouse selection mode Chain -&gt; select chains B and C
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to BandC
 # Action of (BandC) -&gt; find -&gt; any contacts -&gt; between chains within 3.5 Å
 # Show of (BandC) -&gt; sticks
@@ -1282,10 +1497,10 @@ Among the residues that are close to each other at the interface, we can select 
 # Action of BandC_interchain_any -&gt; delete
 # Show of (hydrophobic) -&gt; sticks
 # Color of (hyrdophobic) -&gt; oranges -&gt; orange
-&gt;
-select hydrophobic, (resn ala+gly+val+ile+leu+phe+met) and ((byres chain B within 3.5 of chain C) or (byres chain C within 3.5 of chain B))
-show sticks, hydrophobic
-color orange, hydrophobic</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">select</span> <span class="n">hydrophobic</span><span class="p">,</span> <span class="p">(</span><span class="n">resn</span> <span class="n">ala</span><span class="o">+</span><span class="n">gly</span><span class="o">+</span><span class="n">val</span><span class="o">+</span><span class="n">ile</span><span class="o">+</span><span class="n">leu</span><span class="o">+</span><span class="n">phe</span><span class="o">+</span><span class="n">met</span><span class="p">)</span> <span class="ow">and</span> <span class="p">((</span><span class="n">byres</span> <span class="n">chain</span> <span class="n">B</span> <span class="n">within</span> <span class="mf">3.5</span> <span class="n">of</span> <span class="n">chain</span> <span class="n">C</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">byres</span> <span class="n">chain</span> <span class="n">C</span> <span class="n">within</span> <span class="mf">3.5</span> <span class="n">of</span> <span class="n">chain</span> <span class="n">B</span><span class="p">))</span>
+<span class="n">show</span> <span class="n">sticks</span><span class="p">,</span> <span class="n">hydrophobic</span>
+<span class="n">color</span> <span class="n">orange</span><span class="p">,</span> <span class="n">hydrophobic</span></code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -1311,7 +1526,7 @@ Let&#8217;s make two plots. One of interchain contacts and another of intrachain
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">&gt;
+<pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>
 python plot_cm.py pdbfileslist_cm.txt</code></pre>
 </div>
 </div>
@@ -1339,17 +1554,17 @@ The radius of this ball is previously defined and usually relates to the radius 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Mouse selection mode Chain -&gt; select chain D
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Mouse selection mode Chain -&gt; select chain D
 # Action of (sele) -&gt; copy to object -&gt; new
 # Mouse selection mode Chain -&gt; select chain E
 # Action of (sele) -&gt; copy to object -&gt; new
 # Show of obj01 -&gt; surface
 # Show of obj02 -&gt; surface
-&gt;
-create obj01, 1i8f and chain D
-create obj02, 1i8f and chain E
-show surface, obj01
-show surface, obj02</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">create</span> <span class="n">obj01</span><span class="p">,</span> <span class="mi">1</span><span class="n">i8f</span> <span class="ow">and</span> <span class="n">chain</span> <span class="n">D</span>
+<span class="n">create</span> <span class="n">obj02</span><span class="p">,</span> <span class="mi">1</span><span class="n">i8f</span> <span class="ow">and</span> <span class="n">chain</span> <span class="n">E</span>
+<span class="n">show</span> <span class="n">surface</span><span class="p">,</span> <span class="n">obj01</span>
+<span class="n">show</span> <span class="n">surface</span><span class="p">,</span> <span class="n">obj02</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1361,29 +1576,29 @@ Note how knobs and holes on the surfaces complement themselves.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># select chain F
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># select chain F
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to chainF
 # Plugin -&gt; APBS Electrostatics -&gt; Selection polymer &amp; (chainF) -&gt; Yes
 # select chain G
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to chainF
 # Plugin -&gt; APBS Electrostatics -&gt; Selection polymer &amp; (chainG) -&gt; Yes
-&gt;
-from pmg_tk.startup.apbs_gui.creating import pdb2pqr_cli
-from pmg_tk.startup.apbs_gui.electrostatics import map_new_apbs
-select chainF, chain F
-pdb2pqr_cli("prepared01", "(chainF)", options=["--ff", "amber"])
-map_new_apbs("apbs_map01", "prepared01")
-ramp_new apbs_ramp01, apbs_map01, [-5,0,5]
-set surface_ramp_above_mode, 1, prepared01
-set surface_color, apbs_ramp01, prepared01
-show surface, prepared01
-select chainG, chain G
-pdb2pqr_cli("prepared02", "(chainG)", options=["--ff", "amber"])
-map_new_apbs("apbs_map02", "prepared02")
-ramp_new apbs_ramp02, apbs_map02, [-5,0,5]
-set surface_ramp_above_mode, 1, prepared02
-set surface_color, apbs_ramp02, prepared02
-show surface, prepared02</code></pre>
+</span><span class="o">&gt;</span>
+<span class="kn">from</span> <span class="nn">pmg_tk.startup.apbs_gui.creating</span> <span class="kn">import</span> <span class="n">pdb2pqr_cli</span>
+<span class="kn">from</span> <span class="nn">pmg_tk.startup.apbs_gui.electrostatics</span> <span class="kn">import</span> <span class="n">map_new_apbs</span>
+<span class="n">select</span> <span class="n">chainF</span><span class="p">,</span> <span class="n">chain</span> <span class="n">F</span>
+<span class="n">pdb2pqr_cli</span><span class="p">(</span><span class="s">"prepared01"</span><span class="p">,</span> <span class="s">"(chainF)"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s">"--ff"</span><span class="p">,</span> <span class="s">"amber"</span><span class="p">])</span>
+<span class="n">map_new_apbs</span><span class="p">(</span><span class="s">"apbs_map01"</span><span class="p">,</span> <span class="s">"prepared01"</span><span class="p">)</span>
+<span class="n">ramp_new</span> <span class="n">apbs_ramp01</span><span class="p">,</span> <span class="n">apbs_map01</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">set</span> <span class="n">surface_ramp_above_mode</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">prepared01</span>
+<span class="nb">set</span> <span class="n">surface_color</span><span class="p">,</span> <span class="n">apbs_ramp01</span><span class="p">,</span> <span class="n">prepared01</span>
+<span class="n">show</span> <span class="n">surface</span><span class="p">,</span> <span class="n">prepared01</span>
+<span class="n">select</span> <span class="n">chainG</span><span class="p">,</span> <span class="n">chain</span> <span class="n">G</span>
+<span class="n">pdb2pqr_cli</span><span class="p">(</span><span class="s">"prepared02"</span><span class="p">,</span> <span class="s">"(chainG)"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s">"--ff"</span><span class="p">,</span> <span class="s">"amber"</span><span class="p">])</span>
+<span class="n">map_new_apbs</span><span class="p">(</span><span class="s">"apbs_map02"</span><span class="p">,</span> <span class="s">"prepared02"</span><span class="p">)</span>
+<span class="n">ramp_new</span> <span class="n">apbs_ramp02</span><span class="p">,</span> <span class="n">apbs_map02</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">set</span> <span class="n">surface_ramp_above_mode</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">prepared02</span>
+<span class="nb">set</span> <span class="n">surface_color</span><span class="p">,</span> <span class="n">apbs_ramp02</span><span class="p">,</span> <span class="n">prepared02</span>
+<span class="n">show</span> <span class="n">surface</span><span class="p">,</span> <span class="n">prepared02</span></code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -1455,7 +1670,7 @@ Check that you have 4pcf.cif in your folder and add an entry to our "pdbfileslis
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">&gt;
+<pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>
 python plot_bfactor.py pdbfileslist.txt</code></pre>
 </div>
 </div>
@@ -1476,13 +1691,13 @@ On the other hand, the region around residue 15 has a much higher B factor in 4p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># File -&gt; Get PDB... -&gt; 4pc8
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># File -&gt; Get PDB... -&gt; 4pc8
 # File -&gt; Get PDB... -&gt; 4pcf
 # Action of all -&gt; remove waters
-&gt;
-fetch 4pc8
-fetch 4pcf
-remove solvent</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">fetch</span> <span class="mi">4</span><span class="n">pc8</span>
+<span class="n">fetch</span> <span class="mi">4</span><span class="n">pcf</span>
+<span class="n">remove</span> <span class="n">solvent</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1491,13 +1706,13 @@ So let&#8217;s take one of the monomers of 4pcf and forget about the others to f
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Select chain A of 4pcf
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Select chain A of 4pcf
 # Action of (sele) -&gt; copy to object -&gt; new
 # Action of obj01 -&gt; rename object -&gt; to 4pcf_A
 # Disable 4pcf
-&gt;
-create 4pcf_A, 4pcf and chain A
-disable 4pcf</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">create</span> <span class="mi">4</span><span class="n">pcf_A</span><span class="p">,</span> <span class="mi">4</span><span class="n">pcf</span> <span class="ow">and</span> <span class="n">chain</span> <span class="n">A</span>
+<span class="n">disable</span> <span class="mi">4</span><span class="n">pcf</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1505,11 +1720,11 @@ disable 4pcf</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Action of 4pcf_A -&gt; align -&gt; to molecule -&gt; 4pc8
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of 4pcf_A -&gt; align -&gt; to molecule -&gt; 4pc8
 # Action of 4pc8 -&gt; center
-&gt;
-align 4pcf_A, 4pc8
-center 4pc8</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">align</span> <span class="mi">4</span><span class="n">pcf_A</span><span class="p">,</span> <span class="mi">4</span><span class="n">pc8</span>
+<span class="n">center</span> <span class="mi">4</span><span class="n">pc8</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1521,15 +1736,15 @@ Let&#8217;s superpose only the beta barrel.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Select the residues of 4pc8 in the beta barrel
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Select the residues of 4pc8 in the beta barrel
 # Action of (sele) -&gt; rename selection -&gt; to bsheet_4pc8
 # Select the residues of 4pcf in the beta barrel
 # Action of (sele) -&gt; rename selection -&gt; to bsheet_4pcf
 # Action of bsheet_4pcf -&gt; align -&gt; to selection -&gt; bsheet_4pc8
-&gt;
-select bsheet_4pc8, 4pc8 and ss s
-select bsheet_4pcf, 4pcf_A and ss s
-align bsheet_4pcf, bsheet_4pc8</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">select</span> <span class="n">bsheet_4pc8</span><span class="p">,</span> <span class="mi">4</span><span class="n">pc8</span> <span class="ow">and</span> <span class="n">ss</span> <span class="n">s</span>
+<span class="n">select</span> <span class="n">bsheet_4pcf</span><span class="p">,</span> <span class="mi">4</span><span class="n">pcf_A</span> <span class="ow">and</span> <span class="n">ss</span> <span class="n">s</span>
+<span class="n">align</span> <span class="n">bsheet_4pcf</span><span class="p">,</span> <span class="n">bsheet_4pc8</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1537,13 +1752,13 @@ align bsheet_4pcf, bsheet_4pc8</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Select residue 65 of 4pcf_A
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Select residue 65 of 4pcf_A
 # Action of (sele) -&gt; find -&gt; polar contacts -&gt; to other atoms in object
 # Select residue 65 of 4pc8
 # Action of (sele) -&gt; find -&gt; polar contacts -&gt; to other atoms in object
-&gt;
-dist Hbonds_4pcf, 4pcf_A and resid 65, 4pcf_A, mode=2
-dist Hbonds_4pc8, 4pc8 and resid 65, 4pc8, mode=2</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">dist</span> <span class="n">Hbonds_4pcf</span><span class="p">,</span> <span class="mi">4</span><span class="n">pcf_A</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">4</span><span class="n">pcf_A</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">dist</span> <span class="n">Hbonds_4pc8</span><span class="p">,</span> <span class="mi">4</span><span class="n">pc8</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">4</span><span class="n">pc8</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1557,11 +1772,11 @@ Let&#8217;s mutate the Glutamine65 of 4pcf to a Leucine!</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># Wizard -&gt; Mutagenesis -&gt; Pick Glutamine65 of 4pcf_A -&gt; Mutato to Gln -&gt; change states to find a rotamer without clashes -&gt; Apply -&gt; Done
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Wizard -&gt; Mutagenesis -&gt; Pick Glutamine65 of 4pcf_A -&gt; Mutato to Gln -&gt; change states to find a rotamer without clashes -&gt; Apply -&gt; Done
 # Enable 4pc8
 # Wizard -&gt; Sculpting -&gt; Pick one atom of the new Leucine65 -&gt; and pull it around with command + mouse motions
 # File -&gt; Export Molecule -&gt; 4pcf_A
-&gt;</code></pre>
+</span><span class="o">&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1580,11 +1795,11 @@ Let&#8217;s try to disrupt a beta strand from the interface between monomers, an
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"># File -&gt; Get PDB... -&gt; 1i8f
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># File -&gt; Get PDB... -&gt; 1i8f
 # Action of all -&gt; remove waters
-&gt;
-fetch 1i8f
-remove solvent</code></pre>
+</span><span class="o">&gt;</span>
+<span class="n">fetch</span> <span class="mi">1</span><span class="n">i8f</span>
+<span class="n">remove</span> <span class="n">solvent</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1624,7 +1839,7 @@ In the PDB webpage check the fasta sequence of 4pcf and create a fasta file with
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">&gt;4pcf_Q65L
+<pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>4pcf_Q65L
 MSKPQPIAAANWKSGSPDSLSGLIDLFNSTSINHDVQCVVASTFVHLAMT
 KERLSHPKFVIAALNAGNTDALASLKDFGVNWIVLGHFERRWYYGETNEI
 VADKVAAAVASGFMVIACIGETLQERESGRTAVVVLTQIAAIAKKLKKAD
@@ -1639,38 +1854,38 @@ So, because it&#8217;s a very long but standard command we will use a standard b
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">#!/bin/bash <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="rouge highlight"><code data-lang="sh"><span class="c">#!/bin/bash </span><i class="conum" data-value="1"></i><b>(1)</b>
 
-#SBATCH --auks=yes <i class="conum" data-value="2"></i><b>(2)</b>
-#SBATCH --partition=gpu
-#SBATCH --gpus=1 <i class="conum" data-value="3"></i><b>(3)</b>
-#SBATCH --cpus-per-task=16 <i class="conum" data-value="3"></i><b>(3)</b>
-#SBATCH --mem=100000 <i class="conum" data-value="4"></i><b>(4)</b>
-#SBATCH --output=monomer.out <i class="conum" data-value="5"></i><b>(5)</b>
+<span class="c">#SBATCH --auks=yes </span><i class="conum" data-value="2"></i><b>(2)</b>
+<span class="c">#SBATCH --partition=gpu</span>
+<span class="c">#SBATCH --gpus=1 </span><i class="conum" data-value="3"></i><b>(3)</b>
+<span class="c">#SBATCH --cpus-per-task=16 </span><i class="conum" data-value="3"></i><b>(3)</b>
+<span class="c">#SBATCH --mem=100000 </span><i class="conum" data-value="4"></i><b>(4)</b>
+<span class="c">#SBATCH --output=monomer.out </span><i class="conum" data-value="5"></i><b>(5)</b>
 
-dbdir=/filer-dg/agruppen/DG/camara/AlphaFold_databases <i class="conum" data-value="6"></i><b>(6)</b>
+<span class="nv">dbdir</span><span class="o">=</span>/filer-dg/agruppen/DG/camara/AlphaFold_databases <i class="conum" data-value="6"></i><b>(6)</b>
 
-. /etc/profile.d/modules.sh <i class="conum" data-value="7"></i><b>(7)</b>
+<span class="nb">.</span> /etc/profile.d/modules.sh <i class="conum" data-value="7"></i><b>(7)</b>
 module load alphafold
 module load cuda-toolkit
 
-export OPENMM_CUDA_COMPILER=/opt/Bio/cuda-toolkit/11.6/bin/nvcc <i class="conum" data-value="8"></i><b>(8)</b>
-export SINGULARITY_BIND="/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/"
+<span class="nb">export </span><span class="nv">OPENMM_CUDA_COMPILER</span><span class="o">=</span>/opt/Bio/cuda-toolkit/11.6/bin/nvcc <i class="conum" data-value="8"></i><b>(8)</b>
+<span class="nb">export </span><span class="nv">SINGULARITY_BIND</span><span class="o">=</span><span class="s2">"/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/"</span>
 
-singularity run -B /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold \ <i class="conum" data-value="9"></i><b>(9)</b>
-  --max_template_date=2100-01-01 \
-  --uniref90_database_path=$dbdir/uniref90/uniref90.fasta \
-  --mgnify_database_path=$dbdir/mgnify/mgy_clusters_2022_05.fa \
-  --template_mmcif_dir=$dbdir/pdb_mmcif/mmcif_files \
-  --obsolete_pdbs_path=$dbdir/pdb_mmcif/obsolete.dat \
-  --use_gpu_relax=true \ <i class="conum" data-value="10"></i><b>(10)</b>
-  --bfd_database_path=$dbdir/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt \
-  --uniref30_database_path=$dbdir/uniref30/UniRef30_2021_03 \
-  --pdb70_database_path=$dbdir/pdb70/pdb70 \
-  --fasta_paths=/home/camara/AlphaFold/workshop/monomer.fasta \ <i class="conum" data-value="11"></i><b>(11)</b>
-  --model_preset=monomer_ptm \ <i class="conum" data-value="12"></i><b>(12)</b>
-  --data_dir=$dbdir \
-  --output_dir=/filer-dg/agruppen/DG/camara/AlphaFold_models/workshop/ <i class="conum" data-value="13"></i><b>(13)</b></code></pre>
+singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold <span class="se">\ </span><i class="conum" data-value="9"></i><b>(9)</b>
+  <span class="nt">--max_template_date</span><span class="o">=</span>2100-01-01 <span class="se">\</span>
+  <span class="nt">--uniref90_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/uniref90/uniref90.fasta <span class="se">\</span>
+  <span class="nt">--mgnify_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/mgnify/mgy_clusters_2022_05.fa <span class="se">\</span>
+  <span class="nt">--template_mmcif_dir</span><span class="o">=</span><span class="nv">$dbdir</span>/pdb_mmcif/mmcif_files <span class="se">\</span>
+  <span class="nt">--obsolete_pdbs_path</span><span class="o">=</span><span class="nv">$dbdir</span>/pdb_mmcif/obsolete.dat <span class="se">\</span>
+  <span class="nt">--use_gpu_relax</span><span class="o">=</span><span class="nb">true</span> <span class="se">\ </span><i class="conum" data-value="10"></i><b>(10)</b>
+  <span class="nt">--bfd_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt <span class="se">\</span>
+  <span class="nt">--uniref30_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/uniref30/UniRef30_2021_03 <span class="se">\</span>
+  <span class="nt">--pdb70_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/pdb70/pdb70 <span class="se">\</span>
+  <span class="nt">--fasta_paths</span><span class="o">=</span>/home/camara/AlphaFold/workshop/monomer.fasta <span class="se">\ </span><i class="conum" data-value="11"></i><b>(11)</b>
+  <span class="nt">--model_preset</span><span class="o">=</span>monomer_ptm <span class="se">\ </span><i class="conum" data-value="12"></i><b>(12)</b>
+  <span class="nt">--data_dir</span><span class="o">=</span><span class="nv">$dbdir</span> <span class="se">\</span>
+  <span class="nt">--output_dir</span><span class="o">=</span>/filer-dg/agruppen/DG/camara/AlphaFold_models/workshop/ <i class="conum" data-value="13"></i><b>(13)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1743,7 +1958,7 @@ Meanwhile, check if your job is already running or waiting in the queue</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">squeue --me</code></pre>
+<pre class="rouge highlight"><code data-lang="sh">squeue <span class="nt">--me</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1751,7 +1966,7 @@ Meanwhile, check if your job is already running or waiting in the queue</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">ls /filer/projekte/protein_structure_workshop/amanda/</code></pre>
+<pre class="rouge highlight"><code data-lang="sh"><span class="nb">ls</span> /filer/projekte/protein_structure_workshop/amanda/</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1769,19 +1984,19 @@ And don&#8217;t forget to change residue 76.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">&gt;1I8F_I76P_A
+<pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>1I8F_I76P_A
 MASDISKCFATLGATLQDSIGKQVLVKLRDSHEIRGILRSFDQHVNLLLEDAEEIIDGNVYKRGTMVVRGENVLFPSPVPG
-&gt;1I8F_I76P_B
+<span class="o">&gt;</span>1I8F_I76P_B
 MASDISKCFATLGATLQDSIGKQVLVKLRDSHEIRGILRSFDQHVNLLLEDAEEIIDGNVYKRGTMVVRGENVLFPSPVPG
-&gt;1I8F_I76P_C
+<span class="o">&gt;</span>1I8F_I76P_C
 MASDISKCFATLGATLQDSIGKQVLVKLRDSHEIRGILRSFDQHVNLLLEDAEEIIDGNVYKRGTMVVRGENVLFPSPVPG
-&gt;1I8F_I76P_D
+<span class="o">&gt;</span>1I8F_I76P_D
 MASDISKCFATLGATLQDSIGKQVLVKLRDSHEIRGILRSFDQHVNLLLEDAEEIIDGNVYKRGTMVVRGENVLFPSPVPG
-&gt;1I8F_I76P_E
+<span class="o">&gt;</span>1I8F_I76P_E
 MASDISKCFATLGATLQDSIGKQVLVKLRDSHEIRGILRSFDQHVNLLLEDAEEIIDGNVYKRGTMVVRGENVLFPSPVPG
-&gt;1I8F_I76P_F
+<span class="o">&gt;</span>1I8F_I76P_F
 MASDISKCFATLGATLQDSIGKQVLVKLRDSHEIRGILRSFDQHVNLLLEDAEEIIDGNVYKRGTMVVRGENVLFPSPVPG
-&gt;1I8F_I76P_G
+<span class="o">&gt;</span>1I8F_I76P_G
 MASDISKCFATLGATLQDSIGKQVLVKLRDSHEIRGILRSFDQHVNLLLEDAEEIIDGNVYKRGTMVVRGENVLFPSPVPG</code></pre>
 </div>
 </div>
@@ -1790,39 +2005,39 @@ MASDISKCFATLGATLQDSIGKQVLVKLRDSHEIRGILRSFDQHVNLLLEDAEEIIDGNVYKRGTMVVRGENVLFPSPVP
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">#!/bin/bash
+<pre class="rouge highlight"><code data-lang="sh"><span class="c">#!/bin/bash</span>
 
-#SBATCH --auks=yes
-#SBATCH --partition=gpu
-#SBATCH --gpus=1
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=100000
-#SBATCH --output=multimer.out <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="c">#SBATCH --auks=yes</span>
+<span class="c">#SBATCH --partition=gpu</span>
+<span class="c">#SBATCH --gpus=1</span>
+<span class="c">#SBATCH --cpus-per-task=16</span>
+<span class="c">#SBATCH --mem=100000</span>
+<span class="c">#SBATCH --output=multimer.out </span><i class="conum" data-value="1"></i><b>(1)</b>
 
-dbdir=/filer-dg/agruppen/DG/camara/AlphaFold_databases
+<span class="nv">dbdir</span><span class="o">=</span>/filer-dg/agruppen/DG/camara/AlphaFold_databases
 
-. /etc/profile.d/modules.sh
+<span class="nb">.</span> /etc/profile.d/modules.sh
 module load alphafold
 module load cuda-toolkit
 
-export OPENMM_CUDA_COMPILER=/opt/Bio/cuda-toolkit/11.6/bin/nvcc <i class="conum" data-value="8"></i><b>(8)</b>
-export SINGULARITY_BIND="/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/"
+<span class="nb">export </span><span class="nv">OPENMM_CUDA_COMPILER</span><span class="o">=</span>/opt/Bio/cuda-toolkit/11.6/bin/nvcc <i class="conum" data-value="8"></i><b>(8)</b>
+<span class="nb">export </span><span class="nv">SINGULARITY_BIND</span><span class="o">=</span><span class="s2">"/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/"</span>
 
-singularity run -B /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold \
- --max_template_date=2023-03-16 \
- --uniref90_database_path=$dbdir/uniref90/uniref90.fasta \
- --mgnify_database_path=$dbdir/mgnify/mgy_clusters_2022_05.fa \
- --template_mmcif_dir=$dbdir/pdb_mmcif/mmcif_files \
- --obsolete_pdbs_path=$dbdir/pdb_mmcif/obsolete.dat \
- --use_gpu_relax=true \
- --bfd_database_path=$dbdir/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt \
- --uniref30_database_path=$dbdir/uniref30/UniRef30_2021_03 \
- --pdb_seqres_database_path=$dbdir/pdb_seqres/pdb_seqres.txt \
- --uniprot_database_path=$dbdir/uniprot/uniprot.fasta \
- --fasta_paths=/home/camara/AlphaFold/workshop/multimer.fasta \ <i class="conum" data-value="2"></i><b>(2)</b>
- --model_preset=multimer \ <i class="conum" data-value="3"></i><b>(3)</b>
- --data_dir=$dbdir \
- --output_dir=/filer-dg/agruppen/DG/camara/AlphaFold_models/workshop/ <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold <span class="se">\</span>
+ <span class="nt">--max_template_date</span><span class="o">=</span>2023-03-16 <span class="se">\</span>
+ <span class="nt">--uniref90_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/uniref90/uniref90.fasta <span class="se">\</span>
+ <span class="nt">--mgnify_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/mgnify/mgy_clusters_2022_05.fa <span class="se">\</span>
+ <span class="nt">--template_mmcif_dir</span><span class="o">=</span><span class="nv">$dbdir</span>/pdb_mmcif/mmcif_files <span class="se">\</span>
+ <span class="nt">--obsolete_pdbs_path</span><span class="o">=</span><span class="nv">$dbdir</span>/pdb_mmcif/obsolete.dat <span class="se">\</span>
+ <span class="nt">--use_gpu_relax</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+ <span class="nt">--bfd_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt <span class="se">\</span>
+ <span class="nt">--uniref30_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/uniref30/UniRef30_2021_03 <span class="se">\</span>
+ <span class="nt">--pdb_seqres_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/pdb_seqres/pdb_seqres.txt <span class="se">\</span>
+ <span class="nt">--uniprot_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/uniprot/uniprot.fasta <span class="se">\</span>
+ <span class="nt">--fasta_paths</span><span class="o">=</span>/home/camara/AlphaFold/workshop/multimer.fasta <span class="se">\ </span><i class="conum" data-value="2"></i><b>(2)</b>
+ <span class="nt">--model_preset</span><span class="o">=</span>multimer <span class="se">\ </span><i class="conum" data-value="3"></i><b>(3)</b>
+ <span class="nt">--data_dir</span><span class="o">=</span><span class="nv">$dbdir</span> <span class="se">\</span>
+ <span class="nt">--output_dir</span><span class="o">=</span>/filer-dg/agruppen/DG/camara/AlphaFold_models/workshop/ <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1858,8 +2073,11 @@ singularity run -B /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/a
 Now try to run a prediction control with the original fasta sequence of 1i8f.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_analysing_the_output_of_alphafold2">Analysing the output of AlphaFold2</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analysing_the_output_of_alphafold2">Analysing the output of AlphaFold2</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>AlphaFold2 outputs a list of files with different information.
 Here is a concise list discriminating them by type and content.
@@ -1868,15 +2086,15 @@ They are all human-readable formats, except the .pkl.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">*.out <i class="conum" data-value="1"></i><b>(1)</b>
-relaxed_model_*.pdb <i class="conum" data-value="2"></i><b>(2)</b>
-unrelaxed_model_*.pdb <i class="conum" data-value="3"></i><b>(3)</b>
-ranked_*.pdb <i class="conum" data-value="4"></i><b>(4)</b>
+<pre class="rouge highlight"><code data-lang="sh"><span class="k">*</span>.out <i class="conum" data-value="1"></i><b>(1)</b>
+relaxed_model_<span class="k">*</span>.pdb <i class="conum" data-value="2"></i><b>(2)</b>
+unrelaxed_model_<span class="k">*</span>.pdb <i class="conum" data-value="3"></i><b>(3)</b>
+ranked_<span class="k">*</span>.pdb <i class="conum" data-value="4"></i><b>(4)</b>
 timings.json <i class="conum" data-value="5"></i><b>(5)</b>
 ranking_debug.json <i class="conum" data-value="6"></i><b>(6)</b>
 relax_metrix.json <i class="conum" data-value="7"></i><b>(7)</b>
 features.pkl <i class="conum" data-value="8"></i><b>(8)</b>
-result_model_*.pkl <i class="conum" data-value="9"></i><b>(9)</b>
+result_model_<span class="k">*</span>.pkl <i class="conum" data-value="9"></i><b>(9)</b>
 msas/ <i class="conum" data-value="10"></i><b>(10)</b>
     bfd_uniref_hits.a3m
     mgnify_hits.sto
@@ -2151,10 +2369,9 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 </div>
 </div>
-</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-08 16:59:54 +0200
+Last updated 2023-09-10 06:20:23 +0200
 </div>
 </div>
 </body>
