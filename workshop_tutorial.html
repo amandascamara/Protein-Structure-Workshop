@@ -792,8 +792,8 @@ For the sake of easily analysing the protein structure, let&#8217;s remove the w
 <p>Note that chain E is gone.</p>
 </div>
 <div class="paragraph">
-<p>Protein structures are automatically loaded in the cartoon mode, as listed in the Show tab.
-In the cartoon mode, helices and sheets are displayed as helices and arrows, respectively.
+<p>Protein structures are automatically loaded in the cartoon representation mode, as listed in the Show tab.
+In the cartoon mode, helices and strands are displayed as helices and arrows, respectively.
 These two secondary structures (ss) can be easily differentiated by colour.</p>
 </div>
 <div class="imageblock">
@@ -803,7 +803,7 @@ These two secondary structures (ss) can be easily differentiated by colour.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Color of 1t2d -&gt; by SS -&gt; choose first option
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Color of 1t2d -&gt; by ss -&gt; choose first option
 </span><span class="o">&gt;</span>
 <span class="n">color</span> <span class="n">red</span><span class="p">,</span> <span class="n">ss</span> <span class="n">h</span>
 <span class="n">color</span> <span class="n">yellow</span><span class="p">,</span> <span class="n">ss</span> <span class="n">s</span>
@@ -816,7 +816,7 @@ These two secondary structures (ss) can be easily differentiated by colour.</p>
 <h2 id="_dssp">DSSP</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The secondary structures assigned by PyMOL are rather simple and don&#8217;t distinguish between different types of helices, sheets or loops.
+<p>The secondary structures assigned by PyMOL are rather simple and don&#8217;t distinguish between different types of helices, strands or loops.
 It may also deviate a little from different versions of PyMOL.
 The standard, and more rigorous, method to assign secondary structures is called <a href="https://swift.cmbi.umcn.nl/gv/dssp/">DSSP</a>, an acronym for Define Secondary Structure of Proteins.
 Connected to slurm, we need to briefly install the dssp program.
@@ -834,32 +834,28 @@ Then go to the workshop&#8217;s folder, create a folder for you and copy the scr
 <div class="paragraph">
 <p>The dssp program outputs lots of information on hydrogen bonds and other geometrical features taken from the protein coordinates and used to assign the secondary structures
 (more information <a href="https://swift.cmbi.umcn.nl/gv/dssp/">here</a>).
-It also outputs information on solvent accessibility, but we are only interested on the assigned ss, so we will clean up the output file from dssp to use as in input to PyMOL.</p>
+It also outputs information on solvent accessibility, for instance, but we are only interested on the assigned ss, so we will clean up the output file from dssp to use as in input to PyMOL.
+Copy the downloaded 1t2d.pdb to your folder in slurm and run the following command.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>
-mkdssp <span class="nt">-i</span> 1t2d.pdb <span class="nt">-o</span> 1t2d.dssp  <i class="conum" data-value="1"></i><b>(1)</b>
-bash ssinfo.sh 1t2d.dssp <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+bash ssinfo.sh 1t2d.pdb <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>runs the dssp program.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>cleans the dssp output.</td>
+<td>The first line in this script runs the dssp program and the rest clean the dssp output.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>We can now easily process this information into a coloured matrix to indicate ss into a plot and into PyMOL. We will do this with two python scripts.
 They both take a list of files to process as in input.
-This list of files is simply a list of the name of the files we just created, follow by the name of the monomers or chains that they contain.
-So first create a file named "dsspfileslist.txt" and write the following in it:</p>
+This list of files is simply a list of the name of the .txt file we just created, followed by the name of the monomers or chains that they contain.
+So first create a file named "dsspfileslist.txt".</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -867,13 +863,19 @@ So first create a file named "dsspfileslist.txt" and write the following in it:<
 vi dsspfileslist.txt</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>In VI press the letter i to start writing and type:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>1t2d_dssp.txt monomerA</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This way of processing files is handy to compare different structures and monomers, where each line corresponds to one entry.
+<p>Leave the insert mode by pressing esc and then save and close tipping :wq</p>
+</div>
+<div class="paragraph">
+<p>This way of processing files, with a list of input files, is handy to compare different structures and monomers, where each line corresponds to one entry.
 But for us, it just takes one file with one monomer.
 Now we can create a colour map and an input file for PyMOL.</p>
 </div>
@@ -2371,7 +2373,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-10 06:20:23 +0200
+Last updated 2023-09-13 10:29:14 +0200
 </div>
 </div>
 </body>
