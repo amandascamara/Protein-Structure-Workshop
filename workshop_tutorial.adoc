@@ -103,11 +103,12 @@ color green, ss l+''
 The secondary structures assigned by PyMOL are rather simple and don't distinguish between different types of helices, strands or loops.
 It may also deviate a little from different versions of PyMOL.
 The standard, and more rigorous, method to assign secondary structures is called link:https://swift.cmbi.umcn.nl/gv/dssp/[DSSP], an acronym for Define Secondary Structure of Proteins.
-Connected to slurm, we need to briefly install the dssp program.
+Connected to slurm, we need to briefly install the dssp program and load a python library for plotting the results.
 Then go to the workshop's folder, create a folder for you and copy the scripts we are going to use to your folder.
 [source,sh]
 ----
 pip install dssp-wsl
+module load matplotlib
 cd /filer/projekte/protein_structure_workshop/
 mkdir amanda
 cd amanda
@@ -151,7 +152,9 @@ python dssp2pymol.py dsspfileslist.txt
 ----
 Take a look at the python scripts you just used.
 At the top of them there is a HEX colour code that you can change as you prefer.
-You must have two output files now. monomerA_dssp.png is a figure with a coloured matrix indicating the ss,
+You must have two output files now, monomerA_dssp.png and 1t2d_dssp.pml.
+Copy them to your folder in your local Dektop to open them.
+monomerA_dssp.png is a figure with a coloured matrix indicating the ss,
 
 image::Pictures/Picture5.png[width=500]
 
@@ -198,6 +201,7 @@ spectrum count, rainbow, 1t2d
 image::Pictures/Picture6b.png[width=500]
 
 From the python script, it is clear how any color can be selected using HEX codes with the command line. But any color can be created with mouse actions as well.
+
 [source,python]
 ----
 # Settings -> Colors... -> Red 0,17 Green 0,66 Blue 0,74 Name NewBlue -> Apply
@@ -213,7 +217,7 @@ Other mouse functions together with keyboard shortcuts are possible, but they va
 Make sure the Selecting mode displays Residues. Clicking on it again will change to other selection options.
 Rotating the structure, see if you can find and select the first residue.
 The first residue can also be selected at the sequence bar.
-Now see if you can identify and select the alternating six beta strands and  five alpha helices that form the Rossmann folding.
+Now see if you can identify and select the alternating six beta strands and  five alpha helices that form the Rossmann fold.
 Color the entire protein in white and highlight the Rossmann coloring its ss.
 [source,python]
 ----
@@ -256,7 +260,9 @@ But some lines point to nothing. Let's find out what are at the other end of the
 [source,python]
 ----
 # Action of (NAD) -> modify -> around -> residues within 4 A
-# Show of (NAD) -> sticks
+# Action of (NAD) -> rename selection -> Renaming NAD to aroundNAD
+# Show of (aroundNAD) -> sticks
+# Disable (aroundNAD)
 >
 select aroundNAD, byres all within 4 of (NAD)
 show sticks, aroundNAD
@@ -266,9 +272,9 @@ Try to identify exactly which residues make hydrogen bonds with NAD.
 ----
 # select residues contacting NAD
 # Action of (sele) -> rename selection -> Renaming sele to resbond
-# Hide of (1t2d) -> sticks
+# Disable (resbond)
+# Hide of (aroundNAD) -> sticks
 # Show of (resbond) -> sticks
-# Show of (NAD) -> sticks
 >
 select resbond, resid 13+14+34+66+80+124+126+149
 hide sticks, 1t2d
@@ -281,7 +287,6 @@ Note that all residues contacting the NAD molecule come from loops of the Rossma
 Let's measure the distance for this interaction between the phosphate of the NAD molecule and nitrogen of the first residues in the helix.
 [source,python]
 ----
-# Mouse Mode Viewing and Selecting Atoms
 # Wizard -> Measurement -> pick the first atom -> pick the second atom -> Done
 >
 dist measurement1, /1t2d/A/A/ILE`14/N, /1t2d/C/A/NAD`323/O1N
@@ -535,11 +540,10 @@ So create a text file called "pdbfileslist.txt" with just one line and two colum
 ----
 4pc8.pdb A
 ----
-Load the required libraries before and run the python script plot_bfactor.py as follows.
+Run the python script plot_bfactor.py as follows.
 [source, sh]
 ----
 >
-module load matplotlib
 python plot_bfactor.py pdbfileslist.txt
 ----
 The output shows the B factor per residue number.

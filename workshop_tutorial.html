@@ -819,12 +819,13 @@ These two secondary structures (ss) can be easily differentiated by colour.</p>
 <p>The secondary structures assigned by PyMOL are rather simple and don&#8217;t distinguish between different types of helices, strands or loops.
 It may also deviate a little from different versions of PyMOL.
 The standard, and more rigorous, method to assign secondary structures is called <a href="https://swift.cmbi.umcn.nl/gv/dssp/">DSSP</a>, an acronym for Define Secondary Structure of Proteins.
-Connected to slurm, we need to briefly install the dssp program.
+Connected to slurm, we need to briefly install the dssp program and load a python library for plotting the results.
 Then go to the workshop&#8217;s folder, create a folder for you and copy the scripts we are going to use to your folder.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="sh">pip <span class="nb">install </span>dssp-wsl
+module load matplotlib
 <span class="nb">cd</span> /filer/projekte/protein_structure_workshop/
 <span class="nb">mkdir </span>amanda
 <span class="nb">cd </span>amanda
@@ -889,7 +890,9 @@ python dssp2pymol.py dsspfileslist.txt</code></pre>
 <div class="paragraph">
 <p>Take a look at the python scripts you just used.
 At the top of them there is a HEX colour code that you can change as you prefer.
-You must have two output files now. monomerA_dssp.png is a figure with a coloured matrix indicating the ss,</p>
+You must have two output files now, monomerA_dssp.png and 1t2d_dssp.pml.
+Copy them to your folder in your local Dektop to open them.
+monomerA_dssp.png is a figure with a coloured matrix indicating the ss,</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -975,7 +978,7 @@ Other mouse functions together with keyboard shortcuts are possible, but they va
 Make sure the Selecting mode displays Residues. Clicking on it again will change to other selection options.
 Rotating the structure, see if you can find and select the first residue.
 The first residue can also be selected at the sequence bar.
-Now see if you can identify and select the alternating six beta strands and  five alpha helices that form the Rossmann folding.
+Now see if you can identify and select the alternating six beta strands and  five alpha helices that form the Rossmann fold.
 Color the entire protein in white and highlight the Rossmann coloring its ss.</p>
 </div>
 <div class="listingblock">
@@ -1032,7 +1035,9 @@ But some lines point to nothing. Let&#8217;s find out what are at the other end 
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="python"><span class="c1"># Action of (NAD) -&gt; modify -&gt; around -&gt; residues within 4 A
-# Show of (NAD) -&gt; sticks
+# Action of (NAD) -&gt; rename selection -&gt; Renaming NAD to aroundNAD
+# Show of (aroundNAD) -&gt; sticks
+# Disable (aroundNAD)
 </span><span class="o">&gt;</span>
 <span class="n">select</span> <span class="n">aroundNAD</span><span class="p">,</span> <span class="n">byres</span> <span class="nb">all</span> <span class="n">within</span> <span class="mi">4</span> <span class="n">of</span> <span class="p">(</span><span class="n">NAD</span><span class="p">)</span>
 <span class="n">show</span> <span class="n">sticks</span><span class="p">,</span> <span class="n">aroundNAD</span></code></pre>
@@ -1045,9 +1050,9 @@ But some lines point to nothing. Let&#8217;s find out what are at the other end 
 <div class="content">
 <pre class="rouge highlight"><code data-lang="python"><span class="c1"># select residues contacting NAD
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to resbond
-# Hide of (1t2d) -&gt; sticks
+# Disable (resbond)
+# Hide of (aroundNAD) -&gt; sticks
 # Show of (resbond) -&gt; sticks
-# Show of (NAD) -&gt; sticks
 </span><span class="o">&gt;</span>
 <span class="n">select</span> <span class="n">resbond</span><span class="p">,</span> <span class="n">resid</span> <span class="mi">13</span><span class="o">+</span><span class="mi">14</span><span class="o">+</span><span class="mi">34</span><span class="o">+</span><span class="mi">66</span><span class="o">+</span><span class="mi">80</span><span class="o">+</span><span class="mi">124</span><span class="o">+</span><span class="mi">126</span><span class="o">+</span><span class="mi">149</span>
 <span class="n">hide</span> <span class="n">sticks</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span>
@@ -1065,8 +1070,7 @@ Let&#8217;s measure the distance for this interaction between the phosphate of t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Mouse Mode Viewing and Selecting Atoms
-# Wizard -&gt; Measurement -&gt; pick the first atom -&gt; pick the second atom -&gt; Done
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Wizard -&gt; Measurement -&gt; pick the first atom -&gt; pick the second atom -&gt; Done
 </span><span class="o">&gt;</span>
 <span class="n">dist</span> <span class="n">measurement1</span><span class="p">,</span> <span class="o">/</span><span class="mi">1</span><span class="n">t2d</span><span class="o">/</span><span class="n">A</span><span class="o">/</span><span class="n">A</span><span class="o">/</span><span class="n">ILE</span><span class="sb">`14/N, /1t2d/C/A/NAD`</span><span class="mi">323</span><span class="o">/</span><span class="n">O1N</span></code></pre>
 </div>
@@ -1416,12 +1420,11 @@ So create a text file called "pdbfileslist.txt" with just one line and two colum
 </div>
 </div>
 <div class="paragraph">
-<p>Load the required libraries before and run the python script plot_bfactor.py as follows.</p>
+<p>Run the python script plot_bfactor.py as follows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>
-module load matplotlib
 python plot_bfactor.py pdbfileslist.txt</code></pre>
 </div>
 </div>
@@ -2373,7 +2376,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-13 10:29:14 +0200
+Last updated 2023-09-13 11:13:08 +0200
 </div>
 </div>
 </body>
