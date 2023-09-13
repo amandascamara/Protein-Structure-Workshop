@@ -224,6 +224,7 @@ Color the entire protein in white and highlight the Rossmann coloring its ss.
 # Color of 1t2d -> grays -> white
 # in the sequence bar select residues 1-149
 # Action of (sele) -> rename selection -> Renaming sele to Rossmann
+# Disable (Rossmann)
 # Color of (Rossmann) -> by ss -> first option
 >
 color white, 1t2d
@@ -240,6 +241,7 @@ Note that NAD lies right above the Rossmann fold and let's color it regarding it
 ----
 # select the NAD molecule
 # Action of (sele) -> rename selection -> Renaming sele to NAD
+# Disable (NAD)
 # Color of (NAD) -> by element -> first option
 >
 select NAD, 1t2d and resname NAD
@@ -307,6 +309,7 @@ Let's calculate the distribution of the electrostatic potential at the surface o
 ----
 # select residues 12-25
 # Action of (sele) -> rename selection -> Renaming sele to helix1
+# Disable (helix1)
 # Plugin -> APBS Electrostatics -> Selection polymer & (helix1) -> Yes
 >
 select helix1, resid 12-25

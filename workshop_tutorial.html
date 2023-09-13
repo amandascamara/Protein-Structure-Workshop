@@ -986,6 +986,7 @@ Color the entire protein in white and highlight the Rossmann coloring its ss.</p
 <pre class="rouge highlight"><code data-lang="python"><span class="c1"># Color of 1t2d -&gt; grays -&gt; white
 # in the sequence bar select residues 1-149
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to Rossmann
+# Disable (Rossmann)
 # Color of (Rossmann) -&gt; by ss -&gt; first option
 </span><span class="o">&gt;</span>
 <span class="n">color</span> <span class="n">white</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span>
@@ -1007,6 +1008,7 @@ Color the entire protein in white and highlight the Rossmann coloring its ss.</p
 <div class="content">
 <pre class="rouge highlight"><code data-lang="python"><span class="c1"># select the NAD molecule
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to NAD
+# Disable (NAD)
 # Color of (NAD) -&gt; by element -&gt; first option
 </span><span class="o">&gt;</span>
 <span class="n">select</span> <span class="n">NAD</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span> <span class="ow">and</span> <span class="n">resname</span> <span class="n">NAD</span>
@@ -1099,6 +1101,7 @@ It&#8217;s a program to numerically solve the rearrangement of charges of a mole
 <div class="content">
 <pre class="rouge highlight"><code data-lang="python"><span class="c1"># select residues 12-25
 # Action of (sele) -&gt; rename selection -&gt; Renaming sele to helix1
+# Disable (helix1)
 # Plugin -&gt; APBS Electrostatics -&gt; Selection polymer &amp; (helix1) -&gt; Yes
 </span><span class="o">&gt;</span>
 <span class="n">select</span> <span class="n">helix1</span><span class="p">,</span> <span class="n">resid</span> <span class="mi">12</span><span class="o">-</span><span class="mi">25</span>
@@ -2376,7 +2379,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-13 11:13:08 +0200
+Last updated 2023-09-13 13:14:37 +0200
 </div>
 </div>
 </body>
