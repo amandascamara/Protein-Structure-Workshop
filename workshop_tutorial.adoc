@@ -1130,10 +1130,12 @@ AlphaFold reports it as values per residue, which are stored in the B factors co
 This choice for storing the pLDDTs is not mere coincidence.
 pLDDTs are often related to the flexibility of the protein, as local distances may vary due to its dynamics, among other reasons.
 AlphaFold relates confidence of the model with the pLDDT in the following way:
+
 * pLDDT>90 Very high confidence
 * 70>pLDDT>90 Confident
 * 50>pLDDT>70 Low confidence
 * pLDDT<50 Very low confidence
+
 Low pLDDT values indicate that the surroundings of a residue varies a lot among the found templates.
 And AlphaFold authors describe a correlation between low pLDDTs and intrinsically disordered regions.
 
