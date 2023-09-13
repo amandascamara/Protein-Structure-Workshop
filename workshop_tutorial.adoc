@@ -214,7 +214,7 @@ set_color NewBlue, [43, 168, 189]
 In the view mode of the mouse, click the left button and move to rotate the protein structure.
 Click the right button and move to zoom in and out.
 Other mouse functions together with keyboard shortcuts are possible, but they vary with mouse type.
-Make sure the Selecting mode displays Residues. Clicking on it again will change to other selection options.
+Make sure the Selecting mode displays "Residues". Clicking on it again will change to other selection options.
 Rotating the structure, see if you can find and select the first residue.
 The first residue can also be selected at the sequence bar.
 Now see if you can identify and select the alternating six beta strands and  five alpha helices that form the Rossmann fold.
@@ -364,7 +364,7 @@ symexp sym, 1t2d, (1t2d), 4
 This generates many new objects, each with one symmetric monomer of the original 1t2d, the asymmetric unit.
 Try to find out the real monomers, which form a tetramer with 1t2d, and delete the other ones, which form the crystal lattice.
 
-link:https://www.ebi.ac.uk/msd-srv/prot_int/cgi-bin/piserver[PDBePISA] helps us to verify the biological assembly.
+link:https://www.ebi.ac.uk/pdbe/pisa/[PDBePISA] helps us to verify the biological assembly.
 PISA stands for Protein Interfaces, Surfaces, and Assemblies.
 It is an online tool provided by PDB Europe.
 Given a pdb file, it provides information on protein interfaces, solvent accessibility, ligand binding sites and biological assemblies.
@@ -489,7 +489,7 @@ Color by secondary structure again and note how loops are more flexible than hel
 
 image::Pictures/PictureH.png[width=500]
 
-In another way, structures from x-ray diffraction carry Atomic Displacement Parameter (ADP), proportional to the amount of smearing of the electron density.
+In another way, structures from x-ray diffraction carry Atomic Displacement Parameters (ADPs), proportional to the amount of smearing of the electron density.
 The emperature factor, or B factor, or Debye-Waller factor, is a single parameter per atom.
 It is the average displacement around each atom's position.
 Higher B factors indicate higher flexibility.
@@ -547,6 +547,7 @@ Run the python script plot_bfactor.py as follows.
 [source, sh]
 ----
 >
+cp ../backup_pdbs/4pc8.pdb .
 python plot_bfactor.py pdbfileslist.txt
 ----
 The output shows the B factor per residue number.
@@ -565,7 +566,7 @@ Fetch the pdb 1i8f, remove waters and color the object by chain.
 ----
 # File -> Get PDB... -> 1i8f
 # Action of 1i8f -> remove waters
-# Color of 18f -> by chain
+# Color of 1i8f -> by chain
 >
 fetch 1i8f
 remove solvent
@@ -631,6 +632,7 @@ And now run the python script.
 [source,sh]
 ----
 >
+cp ../backup_pdbs/1i8f.pdb .
 python plot_cm.py pdbfileslist_cm.txt
 ----
 This plots a heatmap of distances between alpha carbons of each residue of the chosen chains.

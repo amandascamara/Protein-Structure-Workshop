@@ -975,7 +975,7 @@ From blue to red in a rainbow scale.</p>
 <p>In the view mode of the mouse, click the left button and move to rotate the protein structure.
 Click the right button and move to zoom in and out.
 Other mouse functions together with keyboard shortcuts are possible, but they vary with mouse type.
-Make sure the Selecting mode displays Residues. Clicking on it again will change to other selection options.
+Make sure the Selecting mode displays "Residues". Clicking on it again will change to other selection options.
 Rotating the structure, see if you can find and select the first residue.
 The first residue can also be selected at the sequence bar.
 Now see if you can identify and select the alternating six beta strands and  five alpha helices that form the Rossmann fold.
@@ -1176,7 +1176,7 @@ Let&#8217;s generate its symmetry mates.</p>
 Try to find out the real monomers, which form a tetramer with 1t2d, and delete the other ones, which form the crystal lattice.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://www.ebi.ac.uk/msd-srv/prot_int/cgi-bin/piserver">PDBePISA</a> helps us to verify the biological assembly.
+<p><a href="https://www.ebi.ac.uk/pdbe/pisa/">PDBePISA</a> helps us to verify the biological assembly.
 PISA stands for Protein Interfaces, Surfaces, and Assemblies.
 It is an online tool provided by PDB Europe.
 Given a pdb file, it provides information on protein interfaces, solvent accessibility, ligand binding sites and biological assemblies.</p>
@@ -1342,7 +1342,7 @@ They are usually observed superposed.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In another way, structures from x-ray diffraction carry Atomic Displacement Parameter (ADP), proportional to the amount of smearing of the electron density.
+<p>In another way, structures from x-ray diffraction carry Atomic Displacement Parameters (ADPs), proportional to the amount of smearing of the electron density.
 The emperature factor, or B factor, or Debye-Waller factor, is a single parameter per atom.
 It is the average displacement around each atom&#8217;s position.
 Higher B factors indicate higher flexibility.</p>
@@ -1428,6 +1428,7 @@ So create a text file called "pdbfileslist.txt" with just one line and two colum
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>
+<span class="nb">cp</span> ../backup_pdbs/4pc8.pdb <span class="nb">.</span>
 python plot_bfactor.py pdbfileslist.txt</code></pre>
 </div>
 </div>
@@ -1457,7 +1458,7 @@ Fetch the pdb 1i8f, remove waters and color the object by chain.</p>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="python"><span class="c1"># File -&gt; Get PDB... -&gt; 1i8f
 # Action of 1i8f -&gt; remove waters
-# Color of 18f -&gt; by chain
+# Color of 1i8f -&gt; by chain
 </span><span class="o">&gt;</span>
 <span class="n">fetch</span> <span class="mi">1</span><span class="n">i8f</span>
 <span class="n">remove</span> <span class="n">solvent</span>
@@ -1535,6 +1536,7 @@ Let&#8217;s make two plots. One of interchain contacts and another of intrachain
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="sh"><span class="o">&gt;</span>
+<span class="nb">cp</span> ../backup_pdbs/1i8f.pdb <span class="nb">.</span>
 python plot_cm.py pdbfileslist_cm.txt</code></pre>
 </div>
 </div>
@@ -2398,7 +2400,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-13 13:30:22 +0200
+Last updated 2023-09-13 16:01:03 +0200
 </div>
 </div>
 </body>
