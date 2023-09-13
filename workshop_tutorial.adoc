@@ -1089,6 +1089,10 @@ It is usually a list of zeros, but predicted structures with clashes would appea
 <10> msas is a folder containing the alignment hits from different tools.
 
 The output .pdb files can be analysed as any other protein structure, in the same ways described previously in this tutorial.
+So, indulge your curiosity and open the relaxed_model_*.pdb in PyMOL.
+Use the align command to compare with solved structure.
+What differences do you see?
+
 We will now see how to retrieve confidence values, scores and errors.
 
 First thing to check is how well does the found multiple sequence alignment cover the target, or input, sequence.
