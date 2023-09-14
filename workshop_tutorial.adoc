@@ -103,11 +103,11 @@ color green, ss l+''
 The secondary structures assigned by PyMOL are rather simple and don't distinguish between different types of helices, strands or loops.
 It may also deviate a little from different versions of PyMOL.
 The standard, and more rigorous, method to assign secondary structures is called link:https://swift.cmbi.umcn.nl/gv/dssp/[DSSP], an acronym for Define Secondary Structure of Proteins.
-Connected to slurm, we need to briefly install the dssp program and load a python library for plotting the results.
+Connected to slurm, we need to briefly load dssp program and a python library for plotting the results.
 Then go to the workshop's folder, create a folder for you and copy the scripts we are going to use to your folder.
 [source,sh]
 ----
-pip install dssp-wsl
+module load dssp
 module load matplotlib
 cd /filer/projekte/protein_structure_workshop/
 mkdir amanda
