@@ -213,6 +213,7 @@ set_color NewBlue, [43, 168, 189]
 
 In the view mode of the mouse, click the left button and move to rotate the protein structure.
 Click the right button and move to zoom in and out.
+Ctrl (or strg in German or command on Mac) + mouse left button to move the object on the image plane.
 Other mouse functions together with keyboard shortcuts are possible, but they vary with mouse type.
 Make sure the Selecting mode displays "Residues". Clicking on it again will change to other selection options.
 Rotating the structure, see if you can find and select the first residue.
@@ -720,7 +721,7 @@ image::Pictures/Picture13.png[]
 
 == Making mutations
 
-With PyMOL we can easily mutate a residue or rebuild a fragment.
+With PyMOL we can easily mutate a residue or (re)build a fragment.
 It even fixes bad contacts!
 These tools can be used to make homology models.
 Meaning build a protein model by comparison with a homologous protein that already has an available structure.
@@ -813,11 +814,17 @@ Ok! Let's check the mentioned  mutation and how it changes polar contacts.
 [source,python]
 ----
 # Select residue 65 of 4pcf_A
-# Action of (sele) -> find -> polar contacts -> to other atoms in object
+# Action of (sele) -> rename selection to Q65
+# Show of (Q65) -> sticks
+# Action of (Q65) -> find -> polar contacts -> to other atoms in object
 # Select residue 65 of 4pc8
-# Action of (sele) -> find -> polar contacts -> to other atoms in object
+# Action of (sele) -> rename selection to L65
+# Show of (L65) -> sticks
+# Action of (L65) -> find -> polar contacts -> to other atoms in object
 >
-dist Hbonds_4pcf, 4pcf_A and resid 65, 4pcf_A, mode=2
+show sticks, 4pcf_A and resid 65
+dist Q65, 4pcf_A and resid 65, 4pcf_A, mode=2
+show sticks, 4pc8 and resid 65
 dist Hbonds_4pc8, 4pc8 and resid 65, 4pc8, mode=2
 ----
 
@@ -829,9 +836,10 @@ Although 4pcf and 4pc8 have 4 single mutations, this one is regarded as key by t
 Let's mutate the Glutamine65 of 4pcf to a Leucine!
 [source,python]
 ----
-# Wizard -> Mutagenesis -> Pick Glutamine65 of 4pcf_A -> Mutato to Gln -> change states to find a rotamer without clashes -> Apply -> Done
+# Wizard -> Mutagenesis -> Pick Glutamine65 of 4pcf_A
+# No Mutation -> Mutate to LEU -> change states to find a rotamer without clashes -> Apply -> Done
 # Enable 4pc8
-# Wizard -> Sculpting -> Pick one atom of the new Leucine65 -> and pull it around with command + mouse motions
+# Wizard -> Sculpting -> Pick one atom of the new Leucine65 -> and drag it around with ctrl (strg in German or command on Mac) + mouse left button
 # File -> Export Molecule -> 4pcf_A
 >
 ----
@@ -845,17 +853,17 @@ We have seen how important it is for beta strands to complement each other.
 Let's try to disrupt a beta strand from the interface between monomers, and see if the oligomerization is affected.
 [source, python]
 ----
-# File -> Get PDB... -> 1i8f
-# Action of all -> remove waters
+# File -> Open... -> 1i8f.pse
+# Action of 1i8f -> copy to object -> new
 >
-fetch 1i8f
-remove solvent
+load /path2file/1i8f.pse
+create obj03, 1i8f
 ----
 
-Focus on the intrachain polar bonds and the intrachain contact map that we've seen before (<<oligo>>).
+Focus on the interchain polar bonds and the interchain contact map that we've seen before (<<oligo>>).
 Try to choose a key residue from last beta strand of chain A, which could disrupt its own beta strand and oligomerization interface.
 
-You possibly foun Isoleucine76.
+You possibly foundlo Isoleucine76.
 Let's mutate it to a Proline.
 Proline is the only residue whose lateral chain closes back with its main chain.
 This forces the peptide bond to form different angles and also takes the last free proton from the amino group, preventing hydrogen bonds with other atoms.
@@ -1101,7 +1109,7 @@ First thing to check is how well does the found multiple sequence alignment cove
 We will use a python script that reads the features.pkl, so just give the folder name as input.
 [source,sh]
 ----
- python3 plot_coverage_msa.py /filer/projekte/protein_structure_workshop/amanda/4pcf_Q65L
+ python plot_coverage_msa.py /filer/projekte/protein_structure_workshop/amanda/4pcf_Q65L
 ----
 
 image::Pictures/Picture20.png[]
@@ -1119,19 +1127,19 @@ For multimers this is a list of 25 models, ranked by pTM + ipTM values.
 
 See if you can identify the best models for our TIM barrel and heptamer example proteins.
 
-predicted link:https://en.wikipedia.org/wiki/Template_modeling_score[Template Modelling (pTM)]
+predicted link:https://en.wikipedia.org/wiki/Template_modeling_score[Template Modelling] (pTM)
 and interface predicted Template Modelling (ipTM) are single values for the measure of similarity between the predicted and the "real" structures.
 They are stored in the result_model_*.pkl files and can be retrieved with a very simple python script.
 Let's check them for our best models of the TIM barrel and the heptamer.
 [source,sh]
 ----
-python3 return_ptm_iptm.py 4pcf_Q65L/result_model_1_ptm_pred_0.pkl
-python3 return_ptm_iptm.py 1i8f_I76P/result_model_3_multimer_v3_pred_1.pkl
+python return_ptm_iptm.py 4pcf_Q65L/result_model_1_ptm_pred_0.pkl
+python return_ptm_iptm.py 1i8f_I76P/result_model_3_multimer_v3_pred_1.pkl
 ----
 
-predicted link: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3799472/ [Local Distance Difference Test]
+predicted link:https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3799472/ [Local Distance Difference Test]
 compares proteins by evaluating local distances around all atoms.
-AlphaFold reports it as values per residue, which are stored in the B factors columns of the .pdb files.
+AlphaFold reports it as values per residue, which are stored in the B factors column of the .pdb files.
 
 This choice for storing the pLDDTs is not mere coincidence.
 pLDDTs are often related to the flexibility of the protein, as local distances may vary due to its dynamics, among other reasons.
@@ -1143,7 +1151,7 @@ AlphaFold relates confidence of the model with the pLDDT in the following way:
 * pLDDT<50 Very low confidence
 
 Low pLDDT values indicate that the surroundings of a residue varies a lot among the found templates.
-And AlphaFold authors describe a correlation between low pLDDTs and intrinsically disordered regions.
+And AlphaFold authors described a relation between low pLDDTs and intrinsically disordered regions.
 
 Let's check if AlphaFold could detect any change in flexibility related to our mutation in the TIM barrel.
 First, let's check if the loops of the predicted TIM barrel have a lower pLDDT than the rest and can be perceived as more flexible.
@@ -1188,7 +1196,7 @@ Now let's compare all the three predictions of 4pcf, 4pc8 and 4pcf_Q65L. Do you 
 image::Pictures/Picture23.png[width=500]
 
 The last parameter to analyse from AlphaFold is the Predicted Aligned Error (pae).
-It gives the error distance of residue y of the predicted and 'true' structures were aligned at residue x.
+It gives the error distance of residue x if the predicted and 'true' structures were aligned at residue y.
 So it is an asymmetric matrix, contrary to the contact map that we've calculated before (<<oligo>>).
 It measures the relative position between two residues.
 Moreover, it measures the relative position of domains.
@@ -1197,8 +1205,8 @@ and this appears in the PAE, as in this link:https://alphafold.ebi.ac.uk/entry/Q
 For this analysis we will take the predictions made for the heptameric protein.
 
 We have another python script to retrieve the PAE from the result_model_*.pkl files.
-Like in the other python scripts, it takes a list of files as input, but it requires two chain columns, like in the pdbfileslist_cm.txt example
-It also needs a pdb file of the predicted structure (any model would do) to retrieve the information on residue and chain number.
+Like in the other python scripts, it takes a list of files as input, but it requires two chain columns, like in the pdbfileslist_cm.txt example,
+it also needs a pdb file of the predicted structure (any model would do) to retrieve the information on residue and chain number.
 So create a text file with this information, pklfileslist_pae.txt
 [source,sh]
 ----
@@ -1209,7 +1217,7 @@ So create a text file with this information, pklfileslist_pae.txt
 And then run the plot_pae.py python script.
 [source,sh]
 ----
-python3 plot_pae_diff.py pklfileslist_pae.txt
+python plot_pae.py pklfileslist_pae.txt
 ----
 
 image::Pictures/Picture24.png[]
@@ -1220,7 +1228,7 @@ Compared with the contact map we generated before, what information can you take
 Now try to generate PAE matrices for the predicted model with the original sequence of 1i8f.
 What differences do you spot in a comparison with the predicted mutated structure?
 Like in the analysis with the pLDDT, the differences, if any, are very mild.
-And being a heat map, instead of a 2D plot makes it even harder to compare.
+And being a heat map, instead of a 2D plot, makes it even harder to compare.
 So we will take the difference between the PAEs of 1i8f and 1i8f_I76P.
 For this, we will the last python script of this tutorial, plot_pae_diff.py
 Again, it takes a list of files as input, but only two entry files are allowed, for the calculation of PAE of the first minus the PAE of the second.

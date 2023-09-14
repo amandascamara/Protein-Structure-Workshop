@@ -974,6 +974,7 @@ From blue to red in a rainbow scale.</p>
 <div class="paragraph">
 <p>In the view mode of the mouse, click the left button and move to rotate the protein structure.
 Click the right button and move to zoom in and out.
+Ctrl (or strg in German or command on Mac) + mouse left button to move the object on the image plane.
 Other mouse functions together with keyboard shortcuts are possible, but they vary with mouse type.
 Make sure the Selecting mode displays "Residues". Clicking on it again will change to other selection options.
 Rotating the structure, see if you can find and select the first residue.
@@ -1648,7 +1649,7 @@ Can you imagine what is its <a href="https://www.pnas.org/doi/full/10.1073/pnas.
 <h2 id="_making_mutations">Making mutations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>With PyMOL we can easily mutate a residue or rebuild a fragment.
+<p>With PyMOL we can easily mutate a residue or (re)build a fragment.
 It even fixes bad contacts!
 These tools can be used to make homology models.
 Meaning build a protein model by comparison with a homologous protein that already has an available structure.
@@ -1763,11 +1764,17 @@ Let&#8217;s superpose only the beta barrel.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="python"><span class="c1"># Select residue 65 of 4pcf_A
-# Action of (sele) -&gt; find -&gt; polar contacts -&gt; to other atoms in object
+# Action of (sele) -&gt; rename selection to Q65
+# Show of (Q65) -&gt; sticks
+# Action of (Q65) -&gt; find -&gt; polar contacts -&gt; to other atoms in object
 # Select residue 65 of 4pc8
-# Action of (sele) -&gt; find -&gt; polar contacts -&gt; to other atoms in object
+# Action of (sele) -&gt; rename selection to L65
+# Show of (L65) -&gt; sticks
+# Action of (L65) -&gt; find -&gt; polar contacts -&gt; to other atoms in object
 </span><span class="o">&gt;</span>
-<span class="n">dist</span> <span class="n">Hbonds_4pcf</span><span class="p">,</span> <span class="mi">4</span><span class="n">pcf_A</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">4</span><span class="n">pcf_A</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">show</span> <span class="n">sticks</span><span class="p">,</span> <span class="mi">4</span><span class="n">pcf_A</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">65</span>
+<span class="n">dist</span> <span class="n">Q65</span><span class="p">,</span> <span class="mi">4</span><span class="n">pcf_A</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">4</span><span class="n">pcf_A</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">show</span> <span class="n">sticks</span><span class="p">,</span> <span class="mi">4</span><span class="n">pc8</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">65</span>
 <span class="n">dist</span> <span class="n">Hbonds_4pc8</span><span class="p">,</span> <span class="mi">4</span><span class="n">pc8</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">4</span><span class="n">pc8</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span></code></pre>
 </div>
 </div>
@@ -1782,9 +1789,10 @@ Let&#8217;s mutate the Glutamine65 of 4pcf to a Leucine!</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Wizard -&gt; Mutagenesis -&gt; Pick Glutamine65 of 4pcf_A -&gt; Mutato to Gln -&gt; change states to find a rotamer without clashes -&gt; Apply -&gt; Done
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Wizard -&gt; Mutagenesis -&gt; Pick Glutamine65 of 4pcf_A
+# No Mutation -&gt; Mutate to LEU -&gt; change states to find a rotamer without clashes -&gt; Apply -&gt; Done
 # Enable 4pc8
-# Wizard -&gt; Sculpting -&gt; Pick one atom of the new Leucine65 -&gt; and pull it around with command + mouse motions
+# Wizard -&gt; Sculpting -&gt; Pick one atom of the new Leucine65 -&gt; and drag it around with ctrl (strg in German or command on Mac) + mouse left button
 # File -&gt; Export Molecule -&gt; 4pcf_A
 </span><span class="o">&gt;</span></code></pre>
 </div>
@@ -1805,19 +1813,19 @@ Let&#8217;s try to disrupt a beta strand from the interface between monomers, an
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="c1"># File -&gt; Get PDB... -&gt; 1i8f
-# Action of all -&gt; remove waters
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># File -&gt; Open... -&gt; 1i8f.pse
+# Action of 1i8f -&gt; copy to object -&gt; new
 </span><span class="o">&gt;</span>
-<span class="n">fetch</span> <span class="mi">1</span><span class="n">i8f</span>
-<span class="n">remove</span> <span class="n">solvent</span></code></pre>
+<span class="n">load</span> <span class="o">/</span><span class="n">path2file</span><span class="o">/</span><span class="mi">1</span><span class="n">i8f</span><span class="p">.</span><span class="n">pse</span>
+<span class="n">create</span> <span class="n">obj03</span><span class="p">,</span> <span class="mi">1</span><span class="n">i8f</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Focus on the intrachain polar bonds and the intrachain contact map that we&#8217;ve seen before (<a href="#oligo">Analyses of oligomers</a>).
+<p>Focus on the interchain polar bonds and the interchain contact map that we&#8217;ve seen before (<a href="#oligo">Analyses of oligomers</a>).
 Try to choose a key residue from last beta strand of chain A, which could disrupt its own beta strand and oligomerization interface.</p>
 </div>
 <div class="paragraph">
-<p>You possibly foun Isoleucine76.
+<p>You possibly foundlo Isoleucine76.
 Let&#8217;s mutate it to a Proline.
 Proline is the only residue whose lateral chain closes back with its main chain.
 This forces the peptide bond to form different angles and also takes the last free proton from the amino group, preventing hydrogen bonds with other atoms.
@@ -2184,7 +2192,7 @@ We will use a python script that reads the features.pkl, so just give the folder
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh"> python3 plot_coverage_msa.py /filer/projekte/protein_structure_workshop/amanda/4pcf_Q65L</code></pre>
+<pre class="rouge highlight"><code data-lang="sh"> python plot_coverage_msa.py /filer/projekte/protein_structure_workshop/amanda/4pcf_Q65L</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -2210,21 +2218,21 @@ For multimers this is a list of 25 models, ranked by pTM + ipTM values.</p>
 <p>See if you can identify the best models for our TIM barrel and heptamer example proteins.</p>
 </div>
 <div class="paragraph">
-<p>predicted <a href="https://en.wikipedia.org/wiki/Template_modeling_score">Template Modelling (pTM)</a>
+<p>predicted <a href="https://en.wikipedia.org/wiki/Template_modeling_score">Template Modelling</a> (pTM)
 and interface predicted Template Modelling (ipTM) are single values for the measure of similarity between the predicted and the "real" structures.
 They are stored in the result_model_*.pkl files and can be retrieved with a very simple python script.
 Let&#8217;s check them for our best models of the TIM barrel and the heptamer.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">python3 return_ptm_iptm.py 4pcf_Q65L/result_model_1_ptm_pred_0.pkl
-python3 return_ptm_iptm.py 1i8f_I76P/result_model_3_multimer_v3_pred_1.pkl</code></pre>
+<pre class="rouge highlight"><code data-lang="sh">python return_ptm_iptm.py 4pcf_Q65L/result_model_1_ptm_pred_0.pkl
+python return_ptm_iptm.py 1i8f_I76P/result_model_3_multimer_v3_pred_1.pkl</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>predicted link: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3799472/" class="bare">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3799472/</a> [Local Distance Difference Test]
+<p>predicted link:https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3799472/ [Local Distance Difference Test]
 compares proteins by evaluating local distances around all atoms.
-AlphaFold reports it as values per residue, which are stored in the B factors columns of the .pdb files.</p>
+AlphaFold reports it as values per residue, which are stored in the B factors column of the .pdb files.</p>
 </div>
 <div class="paragraph">
 <p>This choice for storing the pLDDTs is not mere coincidence.
@@ -2249,7 +2257,7 @@ AlphaFold relates confidence of the model with the pLDDT in the following way:</
 </div>
 <div class="paragraph">
 <p>Low pLDDT values indicate that the surroundings of a residue varies a lot among the found templates.
-And AlphaFold authors describe a correlation between low pLDDTs and intrinsically disordered regions.</p>
+And AlphaFold authors described a relation between low pLDDTs and intrinsically disordered regions.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s check if AlphaFold could detect any change in flexibility related to our mutation in the TIM barrel.
@@ -2321,7 +2329,7 @@ Now let&#8217;s compare all the three predictions of 4pcf, 4pc8 and 4pcf_Q65L. D
 </div>
 <div class="paragraph">
 <p>The last parameter to analyse from AlphaFold is the Predicted Aligned Error (pae).
-It gives the error distance of residue y of the predicted and 'true' structures were aligned at residue x.
+It gives the error distance of residue x if the predicted and 'true' structures were aligned at residue y.
 So it is an asymmetric matrix, contrary to the contact map that we&#8217;ve calculated before (<a href="#oligo">Analyses of oligomers</a>).
 It measures the relative position between two residues.
 Moreover, it measures the relative position of domains.
@@ -2331,8 +2339,8 @@ For this analysis we will take the predictions made for the heptameric protein.<
 </div>
 <div class="paragraph">
 <p>We have another python script to retrieve the PAE from the result_model_*.pkl files.
-Like in the other python scripts, it takes a list of files as input, but it requires two chain columns, like in the pdbfileslist_cm.txt example
-It also needs a pdb file of the predicted structure (any model would do) to retrieve the information on residue and chain number.
+Like in the other python scripts, it takes a list of files as input, but it requires two chain columns, like in the pdbfileslist_cm.txt example,
+it also needs a pdb file of the predicted structure (any model would do) to retrieve the information on residue and chain number.
 So create a text file with this information, pklfileslist_pae.txt</p>
 </div>
 <div class="listingblock">
@@ -2347,7 +2355,7 @@ So create a text file with this information, pklfileslist_pae.txt</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">python3 plot_pae_diff.py pklfileslist_pae.txt</code></pre>
+<pre class="rouge highlight"><code data-lang="sh">python plot_pae.py pklfileslist_pae.txt</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -2363,7 +2371,7 @@ Compared with the contact map we generated before, what information can you take
 <p>Now try to generate PAE matrices for the predicted model with the original sequence of 1i8f.
 What differences do you spot in a comparison with the predicted mutated structure?
 Like in the analysis with the pLDDT, the differences, if any, are very mild.
-And being a heat map, instead of a 2D plot makes it even harder to compare.
+And being a heat map, instead of a 2D plot, makes it even harder to compare.
 So we will take the difference between the PAEs of 1i8f and 1i8f_I76P.
 For this, we will the last python script of this tutorial, plot_pae_diff.py
 Again, it takes a list of files as input, but only two entry files are allowed, for the calculation of PAE of the first minus the PAE of the second.
@@ -2400,7 +2408,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-13 16:01:03 +0200
+Last updated 2023-09-14 09:29:32 +0200
 </div>
 </div>
 </body>
