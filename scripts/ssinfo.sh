@@ -1,7 +1,7 @@
 #!/bin/bash
 
 filename=${1:0: -4}
-mkdssp -i $filename".pdb" -o $filename".dssp"
+dssp -i $filename".pdb" -o $filename".dssp"
 gawk 'NR>28' $filename".dssp" > $filename"_dssp.txt"
 #sed -i '1,28d' $filename".dssp"
 #sed -i '/!/d' $filename".dssp"
