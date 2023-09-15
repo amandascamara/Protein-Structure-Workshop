@@ -1622,14 +1622,14 @@ Note how knobs and holes on the surfaces complement themselves.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre># Plugin -&gt; APBS Electrostatics -&gt; Selection polymer &amp; (1i8f) -&gt; Yes
-&gt;
-pdb2pqr_cli("prepared03", "(1i8f)", options=["--ff", "amber"])
-map_new_apbs("apbs_map03", "prepared03")
-ramp_new apbs_ramp02, apbs_map03, [-5,0,5]
-set surface_ramp_above_mode, 1, prepared03
-set surface_color, apbs_ramp03, prepared03
-show surface, prepared03</pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Plugin -&gt; APBS Electrostatics -&gt; Selection polymer &amp; (1i8f) -&gt; Yes
+</span><span class="o">&gt;</span>
+<span class="n">pdb2pqr_cli</span><span class="p">(</span><span class="s">"prepared03"</span><span class="p">,</span> <span class="s">"(1i8f)"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s">"--ff"</span><span class="p">,</span> <span class="s">"amber"</span><span class="p">])</span>
+<span class="n">map_new_apbs</span><span class="p">(</span><span class="s">"apbs_map03"</span><span class="p">,</span> <span class="s">"prepared03"</span><span class="p">)</span>
+<span class="n">ramp_new</span> <span class="n">apbs_ramp02</span><span class="p">,</span> <span class="n">apbs_map03</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">set</span> <span class="n">surface_ramp_above_mode</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">prepared03</span>
+<span class="nb">set</span> <span class="n">surface_color</span><span class="p">,</span> <span class="n">apbs_ramp03</span><span class="p">,</span> <span class="n">prepared03</span>
+<span class="n">show</span> <span class="n">surface</span><span class="p">,</span> <span class="n">prepared03</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2408,7 +2408,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-14 13:13:42 +0200
+Last updated 2023-09-15 11:41:56 +0200
 </div>
 </div>
 </body>

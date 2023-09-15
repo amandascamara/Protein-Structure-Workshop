@@ -700,6 +700,7 @@ show surface, prepared02
 image::Pictures/Picture12.png[]
 
 Last, generate the surface of electrostatic potential distribution for the entire heptamer.
+[source,python]
 ----
 # Plugin -> APBS Electrostatics -> Selection polymer & (1i8f) -> Yes
 >
