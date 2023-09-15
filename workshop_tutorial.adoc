@@ -1138,7 +1138,7 @@ python return_ptm_iptm.py 4pcf_Q65L/result_model_1_ptm_pred_0.pkl
 python return_ptm_iptm.py 1i8f_I76P/result_model_3_multimer_v3_pred_1.pkl
 ----
 
-predicted link:https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3799472/[Local Distance Difference Test]
+predicted link:https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3799472/[Local Distance Difference Test] (pLDDT)
 compares proteins by evaluating local distances around all atoms.
 AlphaFold reports it as values per residue, which are stored in the B factors column of the .pdb files.
 
