@@ -37,7 +37,7 @@ Note that if you try to load it again, a second state will be added to the same 
 
 image::Pictures/Picture2.png[width=200]
 
-This is convenient when you have different models for the same structure, like proteins solved by Nuclear Magnetic Resonance, or different conformations of Molecular Dynamics, or different frames of a movie.
+This is convenient when you have different models for the same structure, like proteins solved by Nuclear Magnetic Resonance, or different conformations of Molecular Dynamics, or different frames of a protein trajectory movie.
 Let's change the name of this object to avoid loading states onto it.
 
 [source,python]
@@ -109,7 +109,7 @@ Then go to the workshop's folder, create a folder for you and copy the scripts w
 ----
 module load dssp
 module load matplotlib
-cd /filer/projekte/protein_structure_workshop/
+cd /filer/projekte/protein_structure/
 mkdir amanda
 cd amanda
 cp ../scripts/* .
@@ -124,7 +124,7 @@ Copy the downloaded 1t2d.pdb to your folder in slurm and run the following comma
 >
 bash ssinfo.sh 1t2d.pdb // <1>
 ----
-<1> The first line in this script runs the dssp program and the rest clean the dssp output.
+<1> The first line in this script runs the dssp program and the rest cleans the dssp output.
 
 We can now easily process this information into a coloured matrix to indicate ss into a plot and into PyMOL. We will do this with two python scripts.
 They both take a list of files to process as in input.
@@ -944,9 +944,9 @@ singularity run -B /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/a
 <8> And exporting some paths.
 <9> The actual call for AlphaFold, and lots of paths for the databases below.
 <10> To relax the model or not. Keep it like this.
-<11> Change the name and path of the fasta file (/filer/projekte/protein_structure_workshop/amanda/4pcf_Q65L.fasta).
+<11> Change the name and path of the fasta file (/filer/projekte/protein_structure/amanda/4pcf_Q65L.fasta).
 <12> Indicating its predicting a monomer.
-<13> Change the path for the output, to your folder inside the workshop's folder (/filer/projekte/protein_structure_workshop/amanda).
+<13> Change the path for the output, to your folder inside the workshop's folder (/filer/projekte/protein_structure/amanda).
 
 Now we're ready to send the job to slurm:
 [source,sh]
@@ -964,7 +964,7 @@ squeue --me
 You can also check if the output is being generated.
 [source,sh]
 ----
-ls /filer/projekte/protein_structure_workshop/amanda/
+ls /filer/projekte/protein_structure/amanda/
 ----
 
 Or go ahead and run control predictions of the original fasta sequences of 4pcf and 4pc8.
@@ -1034,9 +1034,9 @@ singularity run -B /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/a
 ----
 
 <1> Change the output file to 1i8f_I76P.out.
-<2> Change the input fasta file to /filer/projekte/protein_structure_workshop/amanda/1i8f_I76P.fasta.
+<2> Change the input fasta file to /filer/projekte/protein_structure/amanda/1i8f_I76P.fasta.
 <3> This indicates it is a multimer.
-<4> Chenge the output folder to /filer/projekte/protein_structure_workshop/amanda/.
+<4> Chenge the output folder to /filer/projekte/protein_structure/amanda/.
 
 
 And send the job to slurm.
@@ -1110,7 +1110,7 @@ First thing to check is how well does the found multiple sequence alignment cove
 We will use a python script that reads the features.pkl, so just give the folder name as input.
 [source,sh]
 ----
- python plot_coverage_msa.py /filer/projekte/protein_structure_workshop/amanda/4pcf_Q65L
+ python plot_coverage_msa.py /filer/projekte/protein_structure/amanda/4pcf_Q65L
 ----
 
 image::Pictures/Picture20.png[]

@@ -730,7 +730,7 @@ Note that if you try to load it again, a second state will be added to the same 
 </div>
 </div>
 <div class="paragraph">
-<p>This is convenient when you have different models for the same structure, like proteins solved by Nuclear Magnetic Resonance, or different conformations of Molecular Dynamics, or different frames of a movie.
+<p>This is convenient when you have different models for the same structure, like proteins solved by Nuclear Magnetic Resonance, or different conformations of Molecular Dynamics, or different frames of a protein trajectory movie.
 Let&#8217;s change the name of this object to avoid loading states onto it.</p>
 </div>
 <div class="listingblock">
@@ -826,7 +826,7 @@ Then go to the workshop&#8217;s folder, create a folder for you and copy the scr
 <div class="content">
 <pre class="rouge highlight"><code data-lang="sh">module load dssp
 module load matplotlib
-<span class="nb">cd</span> /filer/projekte/protein_structure_workshop/
+<span class="nb">cd</span> /filer/projekte/protein_structure/
 <span class="nb">mkdir </span>amanda
 <span class="nb">cd </span>amanda
 <span class="nb">cp</span> ../scripts/<span class="k">*</span> .</code></pre>
@@ -848,7 +848,7 @@ bash ssinfo.sh 1t2d.pdb <i class="conum" data-value="1"></i><b>(1)</b></code></p
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The first line in this script runs the dssp program and the rest clean the dssp output.</td>
+<td>The first line in this script runs the dssp program and the rest cleans the dssp output.</td>
 </tr>
 </table>
 </div>
@@ -1950,7 +1950,7 @@ singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modi
 </tr>
 <tr>
 <td><i class="conum" data-value="11"></i><b>11</b></td>
-<td>Change the name and path of the fasta file (/filer/projekte/protein_structure_workshop/amanda/4pcf_Q65L.fasta).</td>
+<td>Change the name and path of the fasta file (/filer/projekte/protein_structure/amanda/4pcf_Q65L.fasta).</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="12"></i><b>12</b></td>
@@ -1958,7 +1958,7 @@ singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modi
 </tr>
 <tr>
 <td><i class="conum" data-value="13"></i><b>13</b></td>
-<td>Change the path for the output, to your folder inside the workshop&#8217;s folder (/filer/projekte/protein_structure_workshop/amanda).</td>
+<td>Change the path for the output, to your folder inside the workshop&#8217;s folder (/filer/projekte/protein_structure/amanda).</td>
 </tr>
 </table>
 </div>
@@ -1984,7 +1984,7 @@ Meanwhile, check if your job is already running or waiting in the queue</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh"><span class="nb">ls</span> /filer/projekte/protein_structure_workshop/amanda/</code></pre>
+<pre class="rouge highlight"><code data-lang="sh"><span class="nb">ls</span> /filer/projekte/protein_structure/amanda/</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2066,7 +2066,7 @@ singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modi
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Change the input fasta file to /filer/projekte/protein_structure_workshop/amanda/1i8f_I76P.fasta.</td>
+<td>Change the input fasta file to /filer/projekte/protein_structure/amanda/1i8f_I76P.fasta.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -2074,7 +2074,7 @@ singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modi
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Chenge the output folder to /filer/projekte/protein_structure_workshop/amanda/.</td>
+<td>Chenge the output folder to /filer/projekte/protein_structure/amanda/.</td>
 </tr>
 </table>
 </div>
@@ -2192,7 +2192,7 @@ We will use a python script that reads the features.pkl, so just give the folder
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh"> python plot_coverage_msa.py /filer/projekte/protein_structure_workshop/amanda/4pcf_Q65L</code></pre>
+<pre class="rouge highlight"><code data-lang="sh"> python plot_coverage_msa.py /filer/projekte/protein_structure/amanda/4pcf_Q65L</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -2408,7 +2408,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-15 12:01:39 +0200
+Last updated 2023-09-18 07:31:47 +0200
 </div>
 </div>
 </body>
