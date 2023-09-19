@@ -966,6 +966,23 @@ From blue to red in a rainbow scale.</p>
 <span class="n">set_color</span> <span class="n">NewBlue</span><span class="p">,</span> <span class="p">[</span><span class="mi">43</span><span class="p">,</span> <span class="mi">168</span><span class="p">,</span> <span class="mi">189</span><span class="p">]</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Let&#8217;s make more use of the DSSP program and analyse the torsion angles of each residue by plotting a Ramachandran Plot.
+Just give the dssp output file, 1t2d.dssp, as input to another python script, plot_ramachandran_ss.py.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sh">python plot_ramachandran_ss.py 1t2d.dssp2</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="Pictures/Picture_ramachandran.png" alt="Picture ramachandran" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Do all residues fall within the expected regions?</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2408,7 +2425,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-18 07:31:47 +0200
+Last updated 2023-09-19 08:07:36 +0200
 </div>
 </div>
 </body>

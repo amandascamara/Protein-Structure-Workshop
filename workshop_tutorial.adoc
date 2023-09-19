@@ -209,6 +209,17 @@ From the python script, it is clear how any color can be selected using HEX code
 set_color NewBlue, [43, 168, 189]
 ----
 
+Let's make more use of the DSSP program and analyse the torsion angles of each residue by plotting a Ramachandran Plot.
+Just give the dssp output file, 1t2d.dssp, as input to another python script, plot_ramachandran_ss.py.
+[source, sh]
+----
+python plot_ramachandran_ss.py 1t2d.dssp2
+----
+
+image::Pictures/Picture_ramachandran.png[width=500]
+
+Do all residues fall within the expected regions?
+
 == Selecting and measuring contacts
 
 In the view mode of the mouse, click the left button and move to rotate the protein structure.
