@@ -659,7 +659,7 @@ pre.rouge {
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_pymol">PyMOL</a></li>
-<li><a href="#_dssp">DSSP</a></li>
+<li><a href="#_dssp_and_ramachandran">DSSP and Ramachandran</a></li>
 <li><a href="#_selecting_and_measuring_contacts">Selecting and measuring contacts</a></li>
 <li><a href="#APBS">Surface distribution of electrostatic potential</a></li>
 <li><a href="#_symmetry_mates">Symmetry mates</a></li>
@@ -813,7 +813,7 @@ These two secondary structures (ss) can be easily differentiated by colour.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_dssp">DSSP</h2>
+<h2 id="_dssp_and_ramachandran">DSSP and Ramachandran</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The secondary structures assigned by PyMOL are rather simple and don&#8217;t distinguish between different types of helices, strands or loops.
@@ -972,12 +972,12 @@ Just give the dssp output file, 1t2d.dssp, as input to another python script, pl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="sh">python plot_ramachandran_ss.py 1t2d.dssp2</code></pre>
+<pre class="rouge highlight"><code data-lang="sh">python plot_ramachandran_ss.py 1t2d.dssp</code></pre>
 </div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="Pictures/Picture_ramachandran.png" alt="Picture ramachandran" width="500">
+<img src="Pictures/Picture_ramachandran.png" alt="Picture ramachandran" width="700">
 </div>
 </div>
 <div class="paragraph">
@@ -1020,7 +1020,15 @@ Color the entire protein in white and highlight the Rossmann coloring its ss.</p
 </div>
 </div>
 <div class="paragraph">
-<p>Note that NAD lies right above the Rossmann fold and let&#8217;s color it regarding its atoms.</p>
+<p>Note that NAD lies right above the Rossmann fold and let&#8217;s color it regarding its atoms.
+Contrary to the cartoon representation, in representations with atomic resolution PyMOL follows the <a href="https://en.wikipedia.org/wiki/CPK_coloring">CPK colour convention</a>.
+Except for carbons.
+In CPK, nitrogen is blue, oxygen is red and phosphorus is orange, for example.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="Pictures/Picture_CPK.png" alt="Picture CPK">
+</div>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1102,7 +1110,31 @@ Let&#8217;s measure the distance for this interaction between the phosphate of t
 <div class="sectionbody">
 <div class="paragraph">
 <p>Helices have an eletric dipole that can be particularly attractive.
-The eletrostatic potential of a molecule can be calculated in PyMOL with the APBS plugin.
+This is due to the net of hydrogen bond between nitrogens and oxygens of the main chain.
+Let&#8217;s try to display it for the first helix of the Rossmann fold.
+See if you can first identify which residues are part of helix1.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># select residues 12-25
+# Action of (sele) -&gt; copy to object -&gt; new
+# Action of obj01 -&gt; rename object -&gt; Renaming obj01 to helix1
+# Disable 1t2d
+# Show of helix1 -&gt; sticks
+# Hide of helix1 -&gt; side chain
+# Color of helix1 -&gt; by element -&gt; first option
+# Action of helix1 -&gt; find -&gt; polar contacts -&gt; within selection
+</span><span class="o">&gt;</span>
+<span class="n">create</span> <span class="n">helix1</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">12</span><span class="o">-</span><span class="mi">25</span>
+<span class="n">disable</span> <span class="mi">1</span><span class="n">t2d</span>
+<span class="n">hide</span> <span class="n">cartoon</span><span class="p">,</span> <span class="n">helix1</span>
+<span class="n">show</span> <span class="n">sticks</span><span class="p">,</span> <span class="n">helix1</span> <span class="ow">and</span> <span class="p">(</span><span class="n">name</span> <span class="n">c</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">ca</span><span class="p">)</span>
+<span class="n">color</span> <span class="n">atomic</span><span class="p">,</span> <span class="n">helix1</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">element</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">dist</span> <span class="n">Hbonds</span><span class="p">,</span> <span class="n">helix1</span><span class="p">,</span> <span class="n">helix1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The eletrostatic potential of a molecule can be calculated in PyMOL with the APBS plugin.
 APBS stands for Adaptative Poisson-Boltzmann Solver.
 It&#8217;s a program to numerically solve the rearrangement of charges of a molecule surrounded by a solvent with ions and dielectric properties.</p>
 </div>
@@ -1113,19 +1145,15 @@ It&#8217;s a program to numerically solve the rearrangement of charges of a mole
 <div class="title">Figure 1. Redistribution of charges of the solid in response to the charges of the solvent [source: <a href="https://en.wikipedia.org/wiki/Poisson%E2%80%93Boltzmann_equation">wikipedia</a>].</div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s calculate the distribution of the electrostatic potential at the surface of the first helix of the Rossmann fold.</p>
+<p>Let&#8217;s calculate the distribution of the electrostatic potential at the surface of helix1.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="c1"># select residues 12-25
-# Action of (sele) -&gt; rename selection -&gt; Renaming sele to helix1
-# Disable (helix1)
-# Plugin -&gt; APBS Electrostatics -&gt; Selection polymer &amp; (helix1) -&gt; Yes
+<pre class="rouge highlight"><code data-lang="python"><span class="c1"># Plugin -&gt; APBS Electrostatics -&gt; Selection polymer &amp; helix1 -&gt; Yes
 </span><span class="o">&gt;</span>
-<span class="n">select</span> <span class="n">helix1</span><span class="p">,</span> <span class="n">resid</span> <span class="mi">12</span><span class="o">-</span><span class="mi">25</span>
 <span class="kn">from</span> <span class="nn">pmg_tk.startup.apbs_gui.creating</span> <span class="kn">import</span> <span class="n">pdb2pqr_cli</span>
 <span class="kn">from</span> <span class="nn">pmg_tk.startup.apbs_gui.electrostatics</span> <span class="kn">import</span> <span class="n">map_new_apbs</span>
-<span class="n">pdb2pqr_cli</span><span class="p">(</span><span class="s">"prepared01"</span><span class="p">,</span> <span class="s">"(helix1)"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s">"--ff"</span><span class="p">,</span> <span class="s">"amber"</span><span class="p">])</span>
+<span class="n">pdb2pqr_cli</span><span class="p">(</span><span class="s">"prepared01"</span><span class="p">,</span> <span class="s">"helix1"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s">"--ff"</span><span class="p">,</span> <span class="s">"amber"</span><span class="p">])</span>
 <span class="n">map_new_apbs</span><span class="p">(</span><span class="s">"apbs_map01"</span><span class="p">,</span> <span class="s">"prepared01"</span><span class="p">)</span>
 <span class="n">ramp_new</span> <span class="n">apbs_ramp01</span><span class="p">,</span> <span class="n">apbs_map01</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="nb">set</span> <span class="n">surface_ramp_above_mode</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">prepared01</span>
@@ -2425,7 +2453,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-19 08:07:36 +0200
+Last updated 2023-09-20 08:23:21 +0200
 </div>
 </div>
 </body>

@@ -98,7 +98,7 @@ color red, ss h
 color yellow, ss s
 color green, ss l+''
 ----
-== DSSP
+== DSSP and Ramachandran
 
 The secondary structures assigned by PyMOL are rather simple and don't distinguish between different types of helices, strands or loops.
 It may also deviate a little from different versions of PyMOL.
@@ -213,10 +213,10 @@ Let's make more use of the DSSP program and analyse the torsion angles of each r
 Just give the dssp output file, 1t2d.dssp, as input to another python script, plot_ramachandran_ss.py.
 [source, sh]
 ----
-python plot_ramachandran_ss.py 1t2d.dssp2
+python plot_ramachandran_ss.py 1t2d.dssp
 ----
 
-image::Pictures/Picture_ramachandran.png[width=500]
+image::Pictures/Picture_ramachandran.png[width=700]
 
 Do all residues fall within the expected regions?
 
@@ -249,6 +249,12 @@ color green, Rossmann and ss l+''
 image::Pictures/PictureA.png[width=500]
 
 Note that NAD lies right above the Rossmann fold and let's color it regarding its atoms.
+Contrary to the cartoon representation, in representations with atomic resolution PyMOL follows the link:https://en.wikipedia.org/wiki/CPK_coloring[CPK colour convention].
+Except for carbons.
+In CPK, nitrogen is blue, oxygen is red and phosphorus is orange, for example.
+
+image::Pictures/Picture_CPK.png[]
+
 [source,python]
 ----
 # select the NAD molecule
@@ -309,6 +315,28 @@ dist measurement1, /1t2d/A/A/ILE`14/N, /1t2d/C/A/NAD`323/O1N
 == Surface distribution of electrostatic potential [[APBS]]
 
 Helices have an eletric dipole that can be particularly attractive.
+This is due to the net of hydrogen bond between nitrogens and oxygens of the main chain.
+Let's try to display it for the first helix of the Rossmann fold.
+See if you can first identify which residues are part of helix1.
+[source,python]
+----
+# select residues 12-25
+# Action of (sele) -> copy to object -> new
+# Action of obj01 -> rename object -> Renaming obj01 to helix1
+# Disable 1t2d
+# Show of helix1 -> sticks
+# Hide of helix1 -> side chain
+# Color of helix1 -> by element -> first option
+# Action of helix1 -> find -> polar contacts -> within selection
+>
+create helix1, 1t2d and resid 12-25
+disable 1t2d
+hide cartoon, helix1
+show sticks, helix1 and (name c,n,ca)
+color atomic, helix1 and (not element C)
+dist Hbonds, helix1, helix1, mode=2
+----
+
 The eletrostatic potential of a molecule can be calculated in PyMOL with the APBS plugin.
 APBS stands for Adaptative Poisson-Boltzmann Solver.
 It's a program to numerically solve the rearrangement of charges of a molecule surrounded by a solvent with ions and dielectric properties.
@@ -316,18 +344,14 @@ It's a program to numerically solve the rearrangement of charges of a molecule s
 .Redistribution of charges of the solid in response to the charges of the solvent [source: link:https://en.wikipedia.org/wiki/Poisson%E2%80%93Boltzmann_equation[wikipedia]].
 image::Pictures/PicturePB_wikipedia.jpg[]
 
-Let's calculate the distribution of the electrostatic potential at the surface of the first helix of the Rossmann fold.
+Let's calculate the distribution of the electrostatic potential at the surface of helix1.
 [source,python]
 ----
-# select residues 12-25
-# Action of (sele) -> rename selection -> Renaming sele to helix1
-# Disable (helix1)
-# Plugin -> APBS Electrostatics -> Selection polymer & (helix1) -> Yes
+# Plugin -> APBS Electrostatics -> Selection polymer & helix1 -> Yes
 >
-select helix1, resid 12-25
 from pmg_tk.startup.apbs_gui.creating import pdb2pqr_cli
 from pmg_tk.startup.apbs_gui.electrostatics import map_new_apbs
-pdb2pqr_cli("prepared01", "(helix1)", options=["--ff", "amber"])
+pdb2pqr_cli("prepared01", "helix1", options=["--ff", "amber"])
 map_new_apbs("apbs_map01", "prepared01")
 ramp_new apbs_ramp01, apbs_map01, [-5,0,5]
 set surface_ramp_above_mode, 1, prepared01
