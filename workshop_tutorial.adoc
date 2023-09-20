@@ -332,7 +332,7 @@ See if you can first identify which residues are part of helix1.
 create helix1, 1t2d and resid 12-25
 disable 1t2d
 hide cartoon, helix1
-show sticks, helix1 and (name c,n,ca)
+show sticks, helix1 and (name c,n,ca,o)
 color atomic, helix1 and (not element C)
 dist Hbonds, helix1, helix1, mode=2
 ----
@@ -359,9 +359,10 @@ set surface_color, apbs_ramp01, prepared01
 show surface, prepared01
 ----
 
-image::Pictures/PictureD.png[width=500]
+image::Pictures/Picture_helix1dipole.png[width=500]
 
 Note how the beginning of the helix is more positive (or acidic), which attracts the negatively charged phosphates, and the end of the helix is more negative (or basic).
+Enable the 1t2d object again and note that NAD molecule is sitting right on top of this helix, with the phosphate groups close to the acidic pole of helix1.
 
 We should also analyse the electrostatic potential for this entire protein chain.
 [source,python]

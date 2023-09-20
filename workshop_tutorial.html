@@ -1128,7 +1128,7 @@ See if you can first identify which residues are part of helix1.</p>
 <span class="n">create</span> <span class="n">helix1</span><span class="p">,</span> <span class="mi">1</span><span class="n">t2d</span> <span class="ow">and</span> <span class="n">resid</span> <span class="mi">12</span><span class="o">-</span><span class="mi">25</span>
 <span class="n">disable</span> <span class="mi">1</span><span class="n">t2d</span>
 <span class="n">hide</span> <span class="n">cartoon</span><span class="p">,</span> <span class="n">helix1</span>
-<span class="n">show</span> <span class="n">sticks</span><span class="p">,</span> <span class="n">helix1</span> <span class="ow">and</span> <span class="p">(</span><span class="n">name</span> <span class="n">c</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">ca</span><span class="p">)</span>
+<span class="n">show</span> <span class="n">sticks</span><span class="p">,</span> <span class="n">helix1</span> <span class="ow">and</span> <span class="p">(</span><span class="n">name</span> <span class="n">c</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">ca</span><span class="p">,</span><span class="n">o</span><span class="p">)</span>
 <span class="n">color</span> <span class="n">atomic</span><span class="p">,</span> <span class="n">helix1</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">element</span> <span class="n">C</span><span class="p">)</span>
 <span class="n">dist</span> <span class="n">Hbonds</span><span class="p">,</span> <span class="n">helix1</span><span class="p">,</span> <span class="n">helix1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mi">2</span></code></pre>
 </div>
@@ -1163,11 +1163,12 @@ It&#8217;s a program to numerically solve the rearrangement of charges of a mole
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="Pictures/PictureD.png" alt="PictureD" width="500">
+<img src="Pictures/Picture_helix1dipole.png" alt="Picture helix1dipole" width="500">
 </div>
 </div>
 <div class="paragraph">
-<p>Note how the beginning of the helix is more positive (or acidic), which attracts the negatively charged phosphates, and the end of the helix is more negative (or basic).</p>
+<p>Note how the beginning of the helix is more positive (or acidic), which attracts the negatively charged phosphates, and the end of the helix is more negative (or basic).
+Enable the 1t2d object again and note that NAD molecule is sitting right on top of this helix, with the phosphate groups close to the acidic pole of helix1.</p>
 </div>
 <div class="paragraph">
 <p>We should also analyse the electrostatic potential for this entire protein chain.</p>
@@ -2453,7 +2454,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-20 08:23:21 +0200
+Last updated 2023-09-20 15:27:55 +0200
 </div>
 </div>
 </body>
