@@ -1937,7 +1937,7 @@ module load cuda-toolkit
 <span class="nb">export </span><span class="nv">OPENMM_CUDA_COMPILER</span><span class="o">=</span>/opt/Bio/cuda-toolkit/11.6/bin/nvcc <i class="conum" data-value="9"></i><b>(9)</b>
 <span class="nb">export </span><span class="nv">SINGULARITY_BIND</span><span class="o">=</span><span class="s2">"/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/"</span>
 
-singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold <span class="se">\ </span><i class="conum" data-value="10"></i><b>(10)</b>
+singularity run <span class="nt">-B</span> /filer-dg/agruppen/DG/camara/AlphaFold_codes/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold <span class="se">\ </span><i class="conum" data-value="10"></i><b>(10)</b>
   <span class="nt">--max_template_date</span><span class="o">=</span>2100-01-01 <span class="se">\</span>
   <span class="nt">--uniref90_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/uniref90/uniref90.fasta <span class="se">\</span>
   <span class="nt">--mgnify_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/mgnify/mgy_clusters_2022_05.fa <span class="se">\</span>
@@ -2093,7 +2093,7 @@ module load cuda-toolkit
 <span class="nb">export </span><span class="nv">OPENMM_CUDA_COMPILER</span><span class="o">=</span>/opt/Bio/cuda-toolkit/11.6/bin/nvcc
 <span class="nb">export </span><span class="nv">SINGULARITY_BIND</span><span class="o">=</span><span class="s2">"/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/"</span>
 
-singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold <span class="se">\</span>
+singularity run <span class="nt">-B</span> /filer-dg/agruppen/DG/camara/AlphaFold_codes/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold <span class="se">\</span>
  <span class="nt">--max_template_date</span><span class="o">=</span>2023-03-16 <span class="se">\</span>
  <span class="nt">--uniref90_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/uniref90/uniref90.fasta <span class="se">\</span>
  <span class="nt">--mgnify_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/mgnify/mgy_clusters_2022_05.fa <span class="se">\</span>
@@ -2460,7 +2460,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-21 07:50:55 +0200
+Last updated 2023-09-21 08:28:35 +0200
 </div>
 </div>
 </body>
