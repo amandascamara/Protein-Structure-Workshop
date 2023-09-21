@@ -953,7 +953,7 @@ module load alphafold
 module load cuda-toolkit
 
 export OPENMM_CUDA_COMPILER=/opt/Bio/cuda-toolkit/11.6/bin/nvcc <9>
-export SINGULARITY_BIND="/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/"
+export SINGULARITY_BIND="/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/,/filer-dg/agruppen/DG/camara/AlphaFold_codes/"
 
 singularity run -B /filer-dg/agruppen/DG/camara/AlphaFold_codes/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold \ <10>
   --max_template_date=2100-01-01 \
@@ -1053,7 +1053,7 @@ module load alphafold
 module load cuda-toolkit
 
 export OPENMM_CUDA_COMPILER=/opt/Bio/cuda-toolkit/11.6/bin/nvcc
-export SINGULARITY_BIND="/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/"
+export SINGULARITY_BIND="/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/,/filer-dg/agruppen/DG/camara/AlphaFold_codes/"
 
 singularity run -B /filer-dg/agruppen/DG/camara/AlphaFold_codes/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold \
  --max_template_date=2023-03-16 \
