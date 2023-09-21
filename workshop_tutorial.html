@@ -1926,30 +1926,31 @@ So, because it&#8217;s a very long but standard command we will use a standard b
 <span class="c">#SBATCH --cpus-per-task=16 </span><i class="conum" data-value="3"></i><b>(3)</b>
 <span class="c">#SBATCH --mem=100000 </span><i class="conum" data-value="4"></i><b>(4)</b>
 <span class="c">#SBATCH --output=monomer.out </span><i class="conum" data-value="5"></i><b>(5)</b>
+<span class="c">#SBATCH --reservation=ds22809 </span><i class="conum" data-value="6"></i><b>(6)</b>
 
-<span class="nv">dbdir</span><span class="o">=</span>/filer-dg/agruppen/DG/camara/AlphaFold_databases <i class="conum" data-value="6"></i><b>(6)</b>
+<span class="nv">dbdir</span><span class="o">=</span>/filer-dg/agruppen/DG/camara/AlphaFold_databases <i class="conum" data-value="7"></i><b>(7)</b>
 
-<span class="nb">.</span> /etc/profile.d/modules.sh <i class="conum" data-value="7"></i><b>(7)</b>
+<span class="nb">.</span> /etc/profile.d/modules.sh <i class="conum" data-value="8"></i><b>(8)</b>
 module load alphafold
 module load cuda-toolkit
 
-<span class="nb">export </span><span class="nv">OPENMM_CUDA_COMPILER</span><span class="o">=</span>/opt/Bio/cuda-toolkit/11.6/bin/nvcc <i class="conum" data-value="8"></i><b>(8)</b>
+<span class="nb">export </span><span class="nv">OPENMM_CUDA_COMPILER</span><span class="o">=</span>/opt/Bio/cuda-toolkit/11.6/bin/nvcc <i class="conum" data-value="9"></i><b>(9)</b>
 <span class="nb">export </span><span class="nv">SINGULARITY_BIND</span><span class="o">=</span><span class="s2">"/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/"</span>
 
-singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold <span class="se">\ </span><i class="conum" data-value="9"></i><b>(9)</b>
+singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold <span class="se">\ </span><i class="conum" data-value="10"></i><b>(10)</b>
   <span class="nt">--max_template_date</span><span class="o">=</span>2100-01-01 <span class="se">\</span>
   <span class="nt">--uniref90_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/uniref90/uniref90.fasta <span class="se">\</span>
   <span class="nt">--mgnify_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/mgnify/mgy_clusters_2022_05.fa <span class="se">\</span>
   <span class="nt">--template_mmcif_dir</span><span class="o">=</span><span class="nv">$dbdir</span>/pdb_mmcif/mmcif_files <span class="se">\</span>
   <span class="nt">--obsolete_pdbs_path</span><span class="o">=</span><span class="nv">$dbdir</span>/pdb_mmcif/obsolete.dat <span class="se">\</span>
-  <span class="nt">--use_gpu_relax</span><span class="o">=</span><span class="nb">true</span> <span class="se">\ </span><i class="conum" data-value="10"></i><b>(10)</b>
+  <span class="nt">--use_gpu_relax</span><span class="o">=</span><span class="nb">true</span> <span class="se">\ </span><i class="conum" data-value="11"></i><b>(11)</b>
   <span class="nt">--bfd_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt <span class="se">\</span>
   <span class="nt">--uniref30_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/uniref30/UniRef30_2021_03 <span class="se">\</span>
   <span class="nt">--pdb70_database_path</span><span class="o">=</span><span class="nv">$dbdir</span>/pdb70/pdb70 <span class="se">\</span>
-  <span class="nt">--fasta_paths</span><span class="o">=</span>/home/camara/AlphaFold/workshop/monomer.fasta <span class="se">\ </span><i class="conum" data-value="11"></i><b>(11)</b>
-  <span class="nt">--model_preset</span><span class="o">=</span>monomer_ptm <span class="se">\ </span><i class="conum" data-value="12"></i><b>(12)</b>
+  <span class="nt">--fasta_paths</span><span class="o">=</span>/home/camara/AlphaFold/workshop/monomer.fasta <span class="se">\ </span><i class="conum" data-value="12"></i><b>(12)</b>
+  <span class="nt">--model_preset</span><span class="o">=</span>monomer_ptm <span class="se">\ </span><i class="conum" data-value="13"></i><b>(13)</b>
   <span class="nt">--data_dir</span><span class="o">=</span><span class="nv">$dbdir</span> <span class="se">\</span>
-  <span class="nt">--output_dir</span><span class="o">=</span>/filer-dg/agruppen/DG/camara/AlphaFold_models/workshop/ <i class="conum" data-value="13"></i><b>(13)</b></code></pre>
+  <span class="nt">--output_dir</span><span class="o">=</span>/filer-dg/agruppen/DG/camara/AlphaFold_models/workshop/ <i class="conum" data-value="14"></i><b>(14)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1976,34 +1977,38 @@ singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modi
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>Indicating where the databases are installed.</td>
+<td>Only needed for this workshop as we have a node of slurm reserved just for us!</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="7"></i><b>7</b></td>
-<td>Loading some required modules,</td>
+<td>Indicating where the databases are installed.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="8"></i><b>8</b></td>
-<td>And exporting some paths.</td>
+<td>Loading some required modules,</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="9"></i><b>9</b></td>
-<td>The actual call for AlphaFold, and lots of paths for the databases below.</td>
+<td>And exporting some paths.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="10"></i><b>10</b></td>
-<td>To relax the model or not. Keep it like this.</td>
+<td>The actual call for AlphaFold, and lots of paths for the databases below.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="11"></i><b>11</b></td>
-<td>Change the name and path of the fasta file (/filer/projekte/protein_structure/amanda/4pcf_Q65L.fasta).</td>
+<td>To relax the model or not. Keep it like this.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="12"></i><b>12</b></td>
-<td>Indicating its predicting a monomer.</td>
+<td>Change the name and path of the fasta file (/filer/projekte/protein_structure/amanda/4pcf_Q65L.fasta).</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="13"></i><b>13</b></td>
+<td>Indicating its predicting a monomer.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="14"></i><b>14</b></td>
 <td>Change the path for the output, to your folder inside the workshop&#8217;s folder (/filer/projekte/protein_structure/amanda).</td>
 </tr>
 </table>
@@ -2077,6 +2082,7 @@ MASDISKCFATLGATLQDSIGKQVLVKLRDSHEIRGILRSFDQHVNLLLEDAEEIIDGNVYKRGTMVVRGENVLFPSPVP
 <span class="c">#SBATCH --cpus-per-task=16</span>
 <span class="c">#SBATCH --mem=100000</span>
 <span class="c">#SBATCH --output=multimer.out </span><i class="conum" data-value="1"></i><b>(1)</b>
+<span class="c">#SBATCH --reservation=ds22809</span>
 
 <span class="nv">dbdir</span><span class="o">=</span>/filer-dg/agruppen/DG/camara/AlphaFold_databases
 
@@ -2084,7 +2090,7 @@ MASDISKCFATLGATLQDSIGKQVLVKLRDSHEIRGILRSFDQHVNLLLEDAEEIIDGNVYKRGTMVVRGENVLFPSPVP
 module load alphafold
 module load cuda-toolkit
 
-<span class="nb">export </span><span class="nv">OPENMM_CUDA_COMPILER</span><span class="o">=</span>/opt/Bio/cuda-toolkit/11.6/bin/nvcc <i class="conum" data-value="8"></i><b>(8)</b>
+<span class="nb">export </span><span class="nv">OPENMM_CUDA_COMPILER</span><span class="o">=</span>/opt/Bio/cuda-toolkit/11.6/bin/nvcc
 <span class="nb">export </span><span class="nv">SINGULARITY_BIND</span><span class="o">=</span><span class="s2">"/filer,/filer-dg/agruppen/DG/camara/AlphaFold_databases/"</span>
 
 singularity run <span class="nt">-B</span> /home/camara/AlphaFold/alphafold/modified_run_alphafold.py:/app/alphafold/run_alphafold.py /opt/Bio/alphafold/2.30.0/bin/alphafold <span class="se">\</span>
@@ -2454,7 +2460,7 @@ So let&#8217;s write a new input files list, pklfileslist_pae_diff.txt.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-09-20 15:27:55 +0200
+Last updated 2023-09-21 07:50:55 +0200
 </div>
 </div>
 </body>
