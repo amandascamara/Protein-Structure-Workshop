@@ -34,5 +34,5 @@ for nf in range(len(filenames)):
 
 plt.xlabel("Residue",fontsize=16)
 plt.ylabel("B factor",fontsize=16)
-plt.legend()
-plt.savefig('Bfactors.png',dpi=300)
+plt.legend(loc='upper left', bbox_to_anchor=(1, 1))
+plt.savefig('Bfactors.png',dpi=300, bbox_inches='tight')
